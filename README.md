@@ -75,18 +75,3 @@ The aim is to create an accessible hub where players of all levels can quickly f
 
 ---
 
-**Tech Stack**
-
-- HTML5  
-- CSS3 (Flexbox/Grid for layout)  
-- Vanilla JavaScript (DOM, Local Storage)  
-- JSON (for resource data)  
-- GitHub Pages (for deployment)
-
----
-
-**Getting Started**
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/hooptutor.git
