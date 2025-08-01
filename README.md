@@ -71,7 +71,23 @@ The aim is to create an accessible hub where players of all levels can quickly f
 
 *5. Scalability*
 
-- Future-ready: Easily expandable with more categories or community-submitted drills
+- Future-ready: Easily expandable with more categories or community-submitted drills 
+
+
 
 ---
+
+| Element         | Choice                                                                 | Reason                                                                                  |
+|----------------|------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| **Colour Palette** | Primary: #274472 (Dark Blue), Secondary: #A3CEF1 (Light Blue), Accent: #F6F6F6 | Creates a modern, clean, and calming look that feels sporty yet educational            |
+| **Typography**     | Headings: 'Montserrat' (bold), Body: 'Open Sans' '                    | Montserrat adds structure and boldness, while Open Sans ensures effective readability            |
+| **Button Style**   | Rounded corners, filled primary colour on hover                      | Friendly and accessible; hover feedback adds interactivity                              |
+| **Icon Style**     | Flat SVG or minimal outline icons with consistent line weight        | Keeps UI consistent and clean; avoids visual clutter                                   |
+| **Imagery**        | Action-oriented photos (e.g. players training or mid-play shots)      | Adds energy and motivation; reflects target audience aspirations                        |
+| **Forms**          | Simple layout with floating labels and subtle shadows                | Clean look with high usability on both desktop and mobile                              |
+
+
+
+
+![Initial Wireframe](images/InitialWireframe.png)
 
