@@ -88,6 +88,8 @@ The aim is to create an accessible hub where players of all levels can quickly f
 
 
 
-
+## Initial Design
 ![Initial Wireframe](images/InitialWireframe.png)
 
+## Alternative Design
+![Initial Wireframe](images/HoopTutorAlternativeDesign.png)
