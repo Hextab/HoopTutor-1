@@ -76,7 +76,7 @@ The aim is to create an accessible hub where players of all levels can quickly f
 
 
 ---
-
+## Design Choices (Initial)
 | Element         | Choice                                                                 | Reason                                                                                  |
 |----------------|------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
 | **Colour Palette** | Primary: #274472 (Dark Blue), Secondary: #A3CEF1 (Light Blue), Accent: #F6F6F6 | Creates a modern, clean, and calming look that feels sporty yet educational            |
@@ -93,3 +93,17 @@ The aim is to create an accessible hub where players of all levels can quickly f
 
 ## Alternative Design
 ![Initial Wireframe](images/HoopTutorAlternativeDesign.png)
+
+## Design Choices (Alternative)
+
+| Design Element          | Choice Made                                                                                   | Reasoning                                                                                      |
+|-------------------------|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| **Colour Scheme**       | I used the colours red, white, and black with minimal accents                                              | Red conveys energy and urgency, and black and white keeps it clean and professional |
+| **Typography**          | Bold sans-serif for headings, lighter sans-serif for body text                                | Improves readability and makes the headings stand out                                          |
+| **Navigation Bar**      | Top horizontal navigation with bold active link highlight (red underline on active page)      | Keeps navigation consistent and visible                                        |
+| **Hero Image**          | Full-width background image of basketball players in action                                   | Creates immediate visual engagement and sets a sporty tone                                     |
+| **Layout**              | Centralised hero text with call-to-action buttons below event listings                        | Guides the user’s eye from the main title to actionable items                                  |
+| **Event Listings**      | Clean list format with date, title, and location; “Buy Tickets” button in red                 | Simple structure allows quick scanning; red buttons draw attention to actions                  |
+| **Call-to-Action Buttons** | Bright red with white text                                                                  | High contrast for visibility; consistent with brand colour                                     |
+| **Icons/Social Media**  | Small, consistent icons in header for Facebook, Youtube, etc.                              | Provides easy access to community channels without cluttering the page                         |
+| **Spacing & Alignment** | Generous white space, consistent padding, and aligned text/button placements                  | Improves visual clarity                            |
