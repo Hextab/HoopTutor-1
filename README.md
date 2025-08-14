@@ -92,7 +92,7 @@ The aim is to create an accessible hub where players of all levels can quickly f
 ![Initial Wireframe](images/InitialWireframe.png)
 
 ## Alternative Design
-![Initial Wireframe](images/HoopTutorAlternativeDesign.png)
+![HoopTutorAlternativeDesign](images/HoopTutorAlternativeDesign.png)
 
 ## Design Choices (Alternative)
 
@@ -107,3 +107,6 @@ The aim is to create an accessible hub where players of all levels can quickly f
 | **Call-to-Action Buttons** | Bright red with white text                                                                  | High contrast for visibility; consistent with brand colour                                     |
 | **Icons/Social Media**  | Small, consistent icons in header for Facebook, Youtube, etc.                              | Provides easy access to community channels without cluttering the page                         |
 | **Spacing & Alignment** | Generous white space, consistent padding, and aligned text/button placements                  | Improves visual clarity                            |
+
+## Login Function Algorithm
+![Algorithm](images/Algorithm.png)
