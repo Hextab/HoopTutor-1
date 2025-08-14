@@ -89,10 +89,10 @@ The aim is to create an accessible hub where players of all levels can quickly f
 
 
 ## Initial Design
-![Initial Wireframe](images/InitialWireframe.png)
+![Initial Wireframe](Images/InitialWireframe.png)
 
 ## Alternative Design
-![HoopTutorAlternativeDesign](images/HoopTutorAlternativeDesign.png)
+![HoopTutorAlternativeDesign](Images/HoopTutorAlternativeDesign.png)
 
 ## Design Choices (Alternative)
 
@@ -109,4 +109,4 @@ The aim is to create an accessible hub where players of all levels can quickly f
 | **Spacing & Alignment** | Generous white space, consistent padding, and aligned text/button placements                  | Improves visual clarity                            |
 
 ## Login Function Algorithm
-![Algorithm](images/Algorithm.png)
+![Algorithm](Images/Algorithm.png)
