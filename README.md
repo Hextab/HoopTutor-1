@@ -110,3 +110,59 @@ The aim is to create an accessible hub where players of all levels can quickly f
 
 ## Login Function Algorithm
 ![Algorithm](Images/Algorithm.png)
+
+# User Login Process Flowchart - Test Cases
+
+## Test Case 1 — Valid Login Credentials
+| Field | Details |
+|-------|---------|
+| **Test Case ID** | TC-LOGIN-001 |
+| **Test Case Name** | Successful login with correct email and password |
+| **Preconditions** | User has a valid account with email and password stored in the database; system is online and accessible |
+| **Test Steps** | 1. Navigate to login page<br>2. Enter registered email in correct format<br>3. Enter matching password<br>4. Click “Login” button |
+| **Expected Result** | User session is created, and user is redirected to dashboard |
+| **Actual Result** | *(To be filled after execution)* |
+| **Pass/Fail** | *(To be filled after execution)* |
+| **Priority** | High |
+
+---
+
+## Test Case 2 — Empty Fields Validation
+| Field | Details |
+|-------|---------|
+| **Test Case ID** | TC-LOGIN-002 |
+| **Test Case Name** | Login attempt with empty email and/or password fields |
+| **Preconditions** | System is online; no text entered in one or both fields |
+| **Test Steps** | 1. Navigate to login page<br>2. Leave email and/or password field empty<br>3. Click “Login” button |
+| **Expected Result** | Error message “Please enter both fields” is displayed; no data is sent to server |
+| **Actual Result** | *(To be filled after execution)* |
+| **Pass/Fail** | *(To be filled after execution)* |
+| **Priority** | High |
+
+---
+
+## Test Case 3 — Invalid Email Format
+| Field | Details |
+|-------|---------|
+| **Test Case ID** | TC-LOGIN-003 |
+| **Test Case Name** | Login attempt with incorrectly formatted email |
+| **Preconditions** | System is online |
+| **Test Steps** | 1. Navigate to login page<br>2. Enter invalid email format (e.g., `username@com`)<br>3. Enter any password<br>4. Click “Login” button |
+| **Expected Result** | Error message “Invalid email format” is displayed; no data is sent to server |
+| **Actual Result** | *(To be filled after execution)* |
+| **Pass/Fail** | *(To be filled after execution)* |
+| **Priority** | Medium |
+
+---
+
+## Test Case 4 — Incorrect Credentials
+| Field | Details |
+|-------|---------|
+| **Test Case ID** | TC-LOGIN-004 |
+| **Test Case Name** | Login attempt with wrong password or unregistered email |
+| **Preconditions** | System is online; entered credentials do not match any database record |
+| **Test Steps** | 1. Navigate to login page<br>2. Enter registered email OR unregistered email<br>3. Enter incorrect password<br>4. Click “Login” button |
+| **Expected Result** | Error message “Incorrect email or password” is displayed; no session is created |
+| **Actual Result** | *(To be filled after execution)* |
+| **Pass/Fail** | *(To be filled after execution)* |
+| **Priority** | High |
