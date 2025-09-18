@@ -1,19 +1,33 @@
-{% extends 'layout.html' %} {% block content %}
-<div class="container">
-{% for row in content %}
-<div class="card">
-  <img
-    class="card-image"
-    src="{{ row[4] }}"
-    alt="Product image for the {{ row[1] }} VSCode extension."
-  />
-  <h1 class="card-name">{{ row[1] }}</h1>
-  <p class="card-about">{{ row[3] }}</p>
-  <a class="card-link" href="{{ row[2] }}"
-    ><button class="btn">Read More</button></a
-  >
-</div>
-{% endfor %}
-</div>
+{% extends 'layout.html' %}
+{% block content %}
+<section class="hero">
+  <img class="hero-bg" src="static/images/hero-basketball-court.jpg" alt="Basketball court background" />
+  <div class="hero-content">
+    <h1 class="hero-title">HoopTutor</h1>
+    <p class="hero-subtitle">Basketball Training Resources Library</p>
+    <p class="hero-desc">
+      A curated hub for drills, workout plans, and educational content to help
+      you level up your game.
+    </p>
+  </div>
+</section>
+<section class="categories">
+  <a href="shooting.html" class="category-tile shooting">
+    <img class="category-img" src="static/images/shooting-drill.jpg" alt="Shooting drill" />
+    <span class="category-title">Shooting</span>
+  </a>
+  <a href="ball-handling.html" class="category-tile ball-handling">
+    <img class="category-img" src="static/images/ball-handling-drill.jpg" alt="Ball-handling drill" />
+    <span class="category-title">Ball-handling</span>
+  </a>
+  <a href="defense.html" class="category-tile defense">
+    <img class="category-img" src="static/images/defense-drill.jpg" alt="Defense drill" />
+    <span class="category-title">Defense</span>
+  </a>
+  <a href="fitness.html" class="category-tile fitness">
+    <img class="category-img" src="static/images/fitness-drill.jpg" alt="Fitness drill" />
+    <span class="category-title">Fitness</span>
+  </a>
+</section>
 {% endblock %}
 
