@@ -167,4 +167,29 @@ The aim is to create an accessible hub where players of all levels can quickly f
 | **Pass/Fail** | *(To be filled after execution)* |
 | **Priority** | High |
 
+## Week 6 - Project Notes 
+This week’s focus was on building the foundation of HoopTutor through database design. I began by identifying the key types of data that would be required for the app: categories (e.g., shooting, ball-handling, defense, fitness), drills with descriptions and media, and user information for login and potential saved resources. I set up relationships between these tables by using primary and foreign keys, ensuring that each drill was linked to its category and that users could eventually store favourites.
 
+To test the database structure, I manually entered sample drills and ran SQL queries to confirm that joins across tables worked correctly. These queries retrieved meaningful data such as “all beginner shooting drills” or “all fitness drills saved by a particular user.” One challenge was selecting the appropriate data types for storing media links and text descriptions, as well as ensuring queries were not too basic but rather demonstrated relevance to the app’s goals. The database now provides a solid foundation for the front-end to display dynamic information.
+
+## Week 7 - Project Notes 
+The next stage shifted towards the presentation layer. I created three core pages: a homepage with category tiles, a drills library displaying resource cards, and a login page. Each page was styled with CSS to ensure visual clarity and user appeal. I experimented with a modern blue colour palette and rounded button styles to match the intended sporty yet educational tone of HoopTutor.
+
+One of the most significant learning points was linking these static pages to the back-end database so that real data could eventually be displayed. At this stage, I used placeholder content to structure the design and ensure responsiveness across different devices. Running the app locally confirmed that navigation between pages was seamless. While functional, the design still felt basic, so I noted areas for later improvement, such as hover animations and improved alignment.
+
+## Week 8 - Project Notes 
+Building on the previous prototype, I refined the site’s look and feel using W3C standards for styling. Improvements included more consistent typography, spacing, and mobile-friendly formatting. I added subtle hover animations for category tiles and buttons, which made the interface more engaging.
+
+I also began researching APIs that could extend the functionality of HoopTutor, such as embedding YouTube drills directly within resource cards. Some formatting issues remained, particularly with aligning text and images on different screen sizes. The client feedback highlighted that while the structure was strong, the app still required polishing to achieve a professional and consistent aesthetic.
+
+## Week 9 - Project Notes 
+This week marked the transition from static presentation to interactive functionality. I implemented the service worker, manifest.json, and app.js files to begin enabling offline support. While the initial setup ran without major errors, caching all the required resources proved challenging, and offline functionality was not yet fully operational.
+
+At the same time, I ran the first Google Lighthouse report to evaluate the site’s performance, accessibility, and best practices. The accessibility score was strong, but the performance score highlighted issues with unoptimised media. On the interactive side, I started experimenting with features that would make the site more engaging, such as the ability to save resources to favourites using local storage. Although these features were not fully stable, they demonstrated the potential of HoopTutor as a genuine web app rather than just a static site.
+
+## Week 10 - Project Notes
+This week’s focus was on completing the interactivity and addressing client concerns. The login system was refined to display appropriate error messages for invalid email or password entries, which improved the user experience significantly. Work also began on a signup page, although it is not yet fully connected to the back-end.
+
+Offline functionality remains incomplete, and this is now a priority for next term. The service worker has been set up, but it does not yet cache all necessary resources to support smooth offline use. On the design side, some formatting issues were corrected, though others persist, particularly with responsive alignment. A second Lighthouse report was conducted, which showed progress towards W3C compliance but highlighted that performance could still be improved through media optimisation.
+
+The most meaningful progress came from the interactive features: users can now save resources to favourites, and filtering drills by skill level has been introduced. These additions give HoopTutor more practical value to its intended audience. Client feedback was positive about the improvements but emphasised the need to finalise the signup page and achieve offline functionality before user testing next term.

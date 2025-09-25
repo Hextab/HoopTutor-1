@@ -1,7 +1,254 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="category-page">
-  <h1>Defense</h1>
-  <p>Master defensive techniques and drills to become a lockdown defender.</p>
+<section class="defense-hero">
+  <img class="defense-hero-img" src="static/images/defense-drill.jpg" alt="Player sliding laterally with bent knees and active hands" />
+  <div class="defense-hero-content">
+    <h1>Defense Drills & Skills</h1>
+    <h2>Defend Every Inch. Win Every Possession.</h2>
+    <p>Sharpen your defensive skills with these essential drills. Build lateral quickness, reaction time, and team communication for lockdown defense.</p>
+    <span class="caption">Mastering lateral movement with zig-zag slides.</span>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <input type="text" id="drill-search" placeholder="Search drills, skills, or focus..." />
+  <select id="skill-filter">
+    <option value="">All Skill Levels</option>
+    <option value="Beginner">Beginner</option>
+    <option value="Intermediate">Intermediate</option>
+    <option value="Advanced">Advanced</option>
+  </select>
+  <select id="focus-filter">
+    <option value="">All Focus Areas</option>
+    <option value="Lateral Movement & Stance">Lateral Movement & Stance</option>
+    <option value="Shot Containment & Recovery">Shot Containment & Recovery</option>
+    <option value="Reaction & Footwork">Reaction & Footwork</option>
+    <option value="Positioning & Communication">Positioning & Communication</option>
+    <option value="Hustle & Paint Protection">Hustle & Paint Protection</option>
+  </select>
+  <button id="clear-filters">Clear</button>
 </div>
+
+<section class="favorites-section">
+  <h2>Drills</h2>
+  <div class="drill-cards" id="drill-cards">
+    <div class="drill-card" data-drill-id="zig-zag-defensive-slides">
+      <img class="drill-img" src="static/images/defense-drill.jpg" alt="Player sliding laterally with bent knees and active hands" />
+      <h3>Zig-Zag Defensive Slides</h3>
+      <span class="skill-tag">Beginner</span>
+      <span class="focus-tag">Lateral Movement & Stance</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Start on the baseline in a low defensive stance — knees bent, back straight, hands active.</li>
+        <li>Slide diagonally to the first cone or marker.</li>
+        <li>Change direction and slide to the next cone in a zig-zag pattern up the court.</li>
+        <li>Keep feet wide, avoid crossing legs, and stay low throughout.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>3 sets of full-court zig-zag slides</li>
+        <li>Rest 60 seconds between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Chest up, feet wide, hands alive."</b> Build muscle memory for lateral defense.</p>
+      <span class="caption">Mastering lateral movement with zig-zag slides.</span>
+      <button class="fav-btn" onclick="toggleFavorite('zig-zag-defensive-slides', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="closeout-drill">
+      <img class="drill-img" src="static/images/closeout-drill.jpg" alt="Player sprinting toward a shooter with high hand extended" />
+      <h3>Closeout Drill</h3>
+      <span class="skill-tag">Intermediate</span>
+      <span class="focus-tag">Shot Containment & Recovery</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Start under the basket in help-side position.</li>
+        <li>On coach’s cue or partner’s pass, sprint toward the shooter.</li>
+        <li>Chop your feet as you approach, then throw up a high-hand contest.</li>
+        <li>Stay balanced to avoid fouls or blow-bys.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>4 sets of 5 closeouts per side</li>
+        <li>Rest 45 seconds between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Sprint, chop, contest."</b> Train for real-game closeout reactions.</p>
+      <span class="caption">Closing out with control and intensity.</span>
+      <button class="fav-btn" onclick="toggleFavorite('closeout-drill', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="mirror-drill">
+      <img class="drill-img" src="static/images/mirror-drill.jpg" alt="Two players facing each other in defensive stance" />
+      <h3>Mirror Drill (1-on-1 Shadowing)</h3>
+      <span class="skill-tag">Intermediate</span>
+      <span class="focus-tag">Reaction & Footwork</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Pair up with a partner — one is the leader, the other the defender.</li>
+        <li>Leader moves laterally, forward, or backward within a small box.</li>
+        <li>Defender mirrors every movement while staying in stance.</li>
+        <li>Switch roles after 30 seconds.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>3 sets of 30 seconds per role</li>
+        <li>Rest 30 seconds between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"React, don’t reach."</b> Builds anticipation and foot discipline.</p>
+      <span class="caption">Shadowing movement to sharpen reaction time.</span>
+      <button class="fav-btn" onclick="toggleFavorite('mirror-drill', this)"><span class="fav-icon">☆</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="shell-drill">
+      <img class="drill-img" src="static/images/shell-drill.jpg" alt="Four defenders rotating and communicating on court" />
+      <h3>Shell Drill (Team Defense)</h3>
+      <span class="skill-tag">Advanced</span>
+      <span class="focus-tag">Positioning & Communication</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Set up 4 offensive players spaced around the perimeter.</li>
+        <li>4 defenders work on help-side positioning, closeouts, and rotations.</li>
+        <li>Coach cues passes or drives — defenders adjust accordingly.</li>
+        <li>Emphasize verbal communication and awareness.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>3 sets of 90-second rotations</li>
+        <li>Rest 1 minute between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Talk early, move smart."</b> Builds team cohesion and defensive IQ.</p>
+      <span class="caption">Team defense in action — rotate, recover, communicate.</span>
+      <button class="fav-btn" onclick="toggleFavorite('shell-drill', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="transition-recovery">
+      <img class="drill-img" src="static/images/transition-recovery.jpg" alt="Defender sprinting back in transition with offense pushing" />
+      <h3>Transition Recovery Drill</h3>
+      <span class="skill-tag">Advanced</span>
+      <span class="focus-tag">Hustle & Paint Protection</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Start with 3 defenders vs. 4 offensive players.</li>
+        <li>Offense begins with a fast break; defenders sprint back to recover.</li>
+        <li>Defenders must stop ball, protect paint, and match up quickly.</li>
+        <li>Drill goes live after first pass.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>4 sets of transition sequences</li>
+        <li>Rest 90 seconds between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"First back stops ball."</b> Builds urgency and scramble recovery.</p>
+      <span class="caption">Recover fast, protect the paint.</span>
+      <button class="fav-btn" onclick="toggleFavorite('transition-recovery', this)"><span class="fav-icon">☆</span> Favourite</button>
+    </div>
+  </div>
+</section>
+
+<script>
+// Defense drill filter logic
+const searchInput = document.getElementById('drill-search');
+const skillFilter = document.getElementById('skill-filter');
+const focusFilter = document.getElementById('focus-filter');
+const clearBtn = document.getElementById('clear-filters');
+const drillCards = Array.from(document.querySelectorAll('.drill-card'));
+
+function normalize(text) {
+  return text.toLowerCase().replace(/\s+/g, '');
+}
+
+function filterDrills() {
+  const searchVal = normalize(searchInput.value);
+  const skillVal = skillFilter.value;
+  const focusVal = focusFilter.value;
+
+  drillCards.forEach(card => {
+    const name = normalize(card.querySelector('h3').textContent);
+    const instructions = normalize(card.querySelector('ul').textContent);
+    const skill = card.querySelector('.skill-tag').textContent;
+    const focus = card.querySelector('.focus-tag').textContent;
+    let matches = true;
+    if (searchVal && !(name.includes(searchVal) || instructions.includes(searchVal) || normalize(skill).includes(searchVal) || normalize(focus).includes(searchVal))) {
+      matches = false;
+    }
+    if (skillVal && skill !== skillVal) {
+      matches = false;
+    }
+    if (focusVal && focus !== focusVal) {
+      matches = false;
+    }
+    card.style.display = matches ? '' : 'none';
+  });
+}
+
+searchInput.addEventListener('input', filterDrills);
+skillFilter.addEventListener('change', filterDrills);
+focusFilter.addEventListener('change', filterDrills);
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  skillFilter.value = '';
+  focusFilter.value = '';
+  filterDrills();
+});
+
+// Favorite functionality
+function getFavorites() {
+  return JSON.parse(localStorage.getItem('favorites') || '[]');
+}
+function setFavorites(favs) {
+  localStorage.setItem('favorites', JSON.stringify(favs));
+}
+function toggleFavorite(id, btn) {
+  let favs = getFavorites();
+  const isFav = favs.includes(id);
+  if (isFav) {
+    favs = favs.filter(f => f !== id);
+    btn.innerHTML = '<span class="fav-icon">&#9734;</span> Favourite';
+  } else {
+    favs.push(id);
+    btn.innerHTML = '<span class="fav-icon">&#9733;</span> Unfavourite';
+  }
+  setFavorites(favs);
+  updateAllButtons();
+}
+function updateAllButtons() {
+  const favs = getFavorites();
+  document.querySelectorAll('.drill-card').forEach(card => {
+    const id = card.getAttribute('data-drill-id');
+    const btn = card.querySelector('.fav-btn');
+    if (!btn) return;
+    if (favs.includes(id)) {
+      btn.innerHTML = '<span class="fav-icon">&#9733;</span> Unfavourite';
+    } else {
+      btn.innerHTML = '<span class="fav-icon">&#9734;</span> Favourite';
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded', updateAllButtons);
+</script>
+
+<style>
+.defense-hero { background: linear-gradient(120deg, #274472 60%, #A3CEF1 100%); padding: 2rem 0; text-align: center; }
+.defense-hero-img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 0 0 32px 32px; filter: brightness(0.7) blur(1px); }
+.defense-hero-content { position: relative; z-index: 2; color: #fff; max-width: 700px; margin: 0 auto; }
+.defense-hero h1 { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.defense-hero h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; }
+.defense-hero p { font-size: 1.1rem; }
+.caption { display: block; font-size: 0.95rem; color: #A3CEF1; margin-top: 0.5rem; }
+.favorites-section { background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(39,68,114,0.10); margin: 2rem auto; max-width: 900px; padding: 2rem 2.5rem; }
+.filter-bar { display: flex; gap: 1rem; margin-bottom: 2rem; align-items: center; flex-wrap: wrap; }
+.filter-bar input, .filter-bar select { padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #A3CEF1; font-size: 1rem; }
+.filter-bar button { padding: 0.5rem 1.2rem; border-radius: 8px; background: #274472; color: #fff; border: none; font-weight: 600; cursor: pointer; }
+.filter-bar button:hover { background: #A3CEF1; color: #274472; }
+.drill-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+.drill-card { background: #F6F6F6; border-radius: 16px; box-shadow: 0 2px 12px rgba(39,68,114,0.08); padding: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; transition: transform 0.2s, box-shadow 0.2s; }
+.drill-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 6px 24px rgba(39,68,114,0.12); }
+.drill-img { width: 100%; max-width: 180px; border-radius: 12px; margin-bottom: 1rem; object-fit: cover; background: #eaeaea; }
+.skill-tag, .focus-tag { background: #A3CEF1; color: #274472; border-radius: 6px; padding: 0.2rem 0.7rem; font-size: 0.95rem; font-weight: 600; margin-right: 0.5rem; margin-top: 0.5rem; }
+.caption { font-size: 0.95rem; color: #A3CEF1; margin-top: 0.5rem; }
+.fav-btn { background: none; border: none; color: #274472; font-size: 1rem; cursor: pointer; display: flex; align-items: center; margin-top: auto; }
+.fav-icon { font-size: 1.2rem; margin-right: 0.3rem; }
+.fav-btn.favorited .fav-icon { color: #FFCC00; }
+@media (max-width: 900px) { .drill-cards { grid-template-columns: 1fr; gap: 1rem; } .favorites-section { padding: 1.2rem 0.7rem; } }
+</style>
 {% endblock %}

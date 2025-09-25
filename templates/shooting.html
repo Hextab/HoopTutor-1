@@ -1,7 +1,268 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="category-page">
-  <h1>Shooting</h1>
-  <p>Find drills, tips, and resources to improve your basketball shooting skills.</p>
-</div>
+<section class="shooting-hero">
+  <img class="shooting-hero-img" src="static/images/shooting-action.jpg" alt="A high-resolution action shot of a player mid-jump shot with perfect form (elbow aligned, follow-through visible)" />
+  <div class="shooting-hero-content">
+    <h1>Master Your Shot – Basketball Shooting Drills & Techniques</h1>
+    <h2>Sharpen Your Shot. Elevate Your Game.</h2>
+    <p>Shooting is the cornerstone of basketball success. Whether you're working on form, range, or consistency, this section offers curated drills and expert tips to help you become a confident scorer. Explore resources tailored for beginners to advanced players, all designed to build muscle memory, improve accuracy, and simulate game-like conditions.</p>
+    <span class="caption">Perfect form in motion – balance, elbow, follow-through.</span>
+  </div>
+</section>
+
+<section class="shooting-tools">
+  <h2>Filter & Search Tools</h2>
+  <form id="filter-form" class="filter-form" onsubmit="return false;">
+    <label>Skill Level:
+      <select id="skill">
+        <option value="">All</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+      </select>
+    </label>
+    <label>Focus Area:
+      <select id="focus">
+        <option value="">All</option>
+        <option value="Form">Form</option>
+        <option value="Catch & Shoot">Catch & Shoot</option>
+        <option value="Off Dribble">Off Dribble</option>
+        <option value="Game Simulation">Game Simulation</option>
+      </select>
+    </label>
+    <input type="text" id="keyword" placeholder="Search by keyword..." />
+    <button type="button" onclick="searchDrills()">Search</button>
+  </form>
+</section>
+
+<section class="favorites-section">
+  <h2>Drills</h2>
+  <div id="drill-cards" class="drill-cards">
+    <div class="drill-card" data-drill-id="wall-shooting">
+      <img class="drill-img" src="static/images/wall-shooting.jpg" alt="Wall Shooting Drill image" />
+      <h3>Wall Shooting Drill</h3>
+      <span class="skill-tag">Beginner</span>
+      <span class="focus-tag">Form</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Stand about 1–2 feet away from a flat wall.</li>
+        <li>Hold the ball in your shooting position (dominant hand under, guide hand on the side).</li>
+        <li>Shoot the ball softly against the wall, aiming for a consistent release point.</li>
+        <li>Focus on wrist snap, elbow alignment, and follow-through.</li>
+        <li>Avoid hitting the wall too hard — the goal is control, not power.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>3 sets of 20 reps</li>
+        <li>Rest 30 seconds between sets</li>
+        <li>Focus on making each shot identical</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Quiet feet, loud wrist."</b> This drill is about isolating upper-body mechanics.</p>
+      <button class="fav-btn" onclick="toggleFavorite('wall-shooting', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="one-hand-shooting">
+      <img class="drill-img" src="static/images/one-hand-shooting.jpg" alt="1-Hand Shooting Drill image" />
+      <h3>1-Hand Shooting Drill</h3>
+      <span class="skill-tag">Beginner</span>
+      <span class="focus-tag">Form</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Stand 3–5 feet from the hoop.</li>
+        <li>Hold the ball with your shooting hand only — guide hand stays behind your back.</li>
+        <li>Bend knees slightly and shoot with full follow-through.</li>
+        <li>Aim for a soft arc and clean rotation.</li>
+        <li>Focus on balance and wrist extension.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>4 sets of 10 makes</li>
+        <li>Move back 1 foot after each set if consistent</li>
+        <li>Rest 45 seconds between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Elbow under the ball, fingers to the sky."</b> Build muscle memory for clean release.</p>
+      <button class="fav-btn" onclick="toggleFavorite('one-hand-shooting', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="elbow-shooting">
+      <img class="drill-img" src="static/images/elbow-shooting.jpg" alt="Elbow Shooting Drill image" />
+      <h3>Elbow Shooting Drill</h3>
+      <span class="skill-tag">Intermediate</span>
+      <span class="focus-tag">Form</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Start at the right elbow (free-throw line corner).</li>
+        <li>Take 10 shots from that spot, focusing on rhythm and arc.</li>
+        <li>Move to the left elbow and repeat.</li>
+        <li>Use full shooting form with guide hand and footwork.</li>
+        <li>Track makes and aim for consistency.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>3 sets of 10 shots per elbow</li>
+        <li>Total: 60 shots</li>
+        <li>Rest 1 minute between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Same shot, every time."</b> This drill reinforces mid-range repetition.</p>
+      <button class="fav-btn" onclick="toggleFavorite('elbow-shooting', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="catch-shoot">
+      <img class="drill-img" src="static/images/catch-shoot.jpg" alt="Pass, Catch & Shoot Drill image" />
+      <h3>Pass, Catch & Shoot Drill</h3>
+      <span class="skill-tag">Intermediate</span>
+      <span class="focus-tag">Catch & Shoot</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Partner stands at the top of the key with a ball.</li>
+        <li>Shooter starts on the wing, ready in triple-threat position.</li>
+        <li>Partner passes the ball — shooter catches, sets feet, and shoots immediately.</li>
+        <li>Rotate spots: wing, corner, top of key.</li>
+        <li>Emphasize quick footwork and balanced release.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>5 spots × 5 shots per spot = 25 shots per set</li>
+        <li>3 sets total</li>
+        <li>Rest 90 seconds between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Catch low, rise high."</b> Train for game-speed shooting.</p>
+      <button class="fav-btn" onclick="toggleFavorite('catch-shoot', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="step-back">
+      <img class="drill-img" src="static/images/step-back.jpg" alt="Step-Back Shooting Drill image" />
+      <h3>Step-Back Shooting Drill</h3>
+      <span class="skill-tag">Advanced</span>
+      <span class="focus-tag">Off Dribble</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Start at the top of the key with a live dribble.</li>
+        <li>Take 2 hard dribbles forward, plant your lead foot.</li>
+        <li>Execute a quick step-back (push off back foot), creating space.</li>
+        <li>Square up mid-air and shoot with full form.</li>
+        <li>Alternate directions (left/right step-back).</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>4 sets of 8 shots (4 left, 4 right)</li>
+        <li>Rest 1 minute between sets</li>
+        <li>Track makes and footwork efficiency</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Create space, stay balanced."</b> This drill builds separation and control.</p>
+      <button class="fav-btn" onclick="toggleFavorite('step-back', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="figure-8-dribble">
+      <img class="drill-img" src="static/images/figure-8-dribble.jpg" alt="Figure 8 Dribble Drill image" />
+      <h3>Figure 8 Dribble Drill</h3>
+      <span class="skill-tag">Advanced</span>
+      <span class="focus-tag">Ball Handling</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Stand with your feet shoulder-width apart, knees slightly bent.</li>
+        <li>Hold the ball at waist level with both hands.</li>
+        <li>Dribble the ball in a figure 8 pattern around your legs.</li>
+        <li>Keep your head up and maintain a steady rhythm.</li>
+        <li>Focus on using your fingertips, not your palms.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>5 sets of 1 minute</li>
+        <li>Rest 30 seconds between sets</li>
+        <li>Increase speed while maintaining control</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Low and quick."</b> This drill improves ball handling under pressure.</p>
+      <button class="fav-btn" onclick="toggleFavorite('figure-8-dribble', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+  </div>
+  <div id="loading-spinner" style="display:none;text-align:center;margin-top:2rem;">
+    <span>Loading...</span>
+  </div>
+  <div id="error-message" style="display:none;color:#c00;text-align:center;margin-top:2rem;"></div>
+</section>
+
+<style>
+.shooting-hero { background: linear-gradient(120deg, #274472 60%, #A3CEF1 100%); padding: 2rem 0; text-align: center; }
+.shooting-hero-img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 0 0 32px 32px; filter: brightness(0.7) blur(1px); }
+.shooting-hero-content { position: relative; z-index: 2; color: #fff; max-width: 700px; margin: 0 auto; }
+.shooting-hero h1 { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.shooting-hero h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; }
+.shooting-hero p { font-size: 1.1rem; }
+.caption { display: block; font-size: 0.95rem; color: #A3CEF1; margin-top: 0.5rem; }
+.filter-form { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center; }
+.filter-form label { font-weight: 600; color: #274472; }
+.filter-form select, .filter-form input { padding: 0.4rem 0.7rem; border-radius: 8px; border: 1px solid #A3CEF1; font-size: 1rem; }
+.filter-form button { background: #274472; color: #fff; border: none; border-radius: 8px; padding: 0.5rem 1.2rem; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+.filter-form button:hover { background: #A3CEF1; color: #274472; }
+.favorites-section { background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(39,68,114,0.10); margin: 2rem auto; max-width: 900px; padding: 2rem 2.5rem; }
+.drill-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+.drill-card { background: #F6F6F6; border-radius: 16px; box-shadow: 0 2px 12px rgba(39,68,114,0.08); padding: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; transition: transform 0.2s, box-shadow 0.2s; }
+.drill-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 6px 24px rgba(39,68,114,0.12); }
+.drill-img { width: 100%; max-width: 180px; border-radius: 12px; margin-bottom: 1rem; object-fit: cover; background: #eaeaea; }
+.skill-tag, .focus-tag { background: #A3CEF1; color: #274472; border-radius: 6px; padding: 0.2rem 0.7rem; font-size: 0.95rem; font-weight: 600; margin-right: 0.5rem; margin-top: 0.5rem; }
+.favorite-btn { background: #274472; color: #fff; border: none; border-radius: 8px; padding: 0.4rem 1rem; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1rem; cursor: pointer; margin-top: 0.7rem; transition: background 0.2s; }
+.favorite-btn:hover { background: #A3CEF1; color: #274472; }
+.fav-btn {
+  margin-top: 1rem;
+  background: #A3CEF1;
+  color: #274472;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.fav-btn.faved {
+  background: #FFD700 !important;
+  color: #274472 !important;
+}
+.fav-icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+#loading-spinner { font-size: 1.2rem; color: #274472; }
+#error-message { font-size: 1.1rem; }
+@media (max-width: 900px) { .drill-cards { grid-template-columns: 1fr; gap: 1rem; } .favorites-section { padding: 1.2rem 0.7rem; } }
+</style>
+<script>
+function getFavorites() {
+  return JSON.parse(localStorage.getItem('favorites') || '[]');
+}
+function setFavorites(favs) {
+  localStorage.setItem('favorites', JSON.stringify(favs));
+}
+function toggleFavorite(id, btn) {
+  let favs = getFavorites();
+  const isFav = favs.includes(id);
+  if (isFav) {
+    favs = favs.filter(f => f !== id);
+    btn.innerHTML = '<span class="fav-icon">&#9734;</span> Favourite';
+  } else {
+    favs.push(id);
+    btn.innerHTML = '<span class="fav-icon">&#9733;</span> Unfavourite';
+  }
+  setFavorites(favs);
+  updateAllButtons();
+}
+function updateAllButtons() {
+  const favs = getFavorites();
+  document.querySelectorAll('.drill-card').forEach(card => {
+    const id = card.getAttribute('data-drill-id');
+    const btn = card.querySelector('.fav-btn');
+    if (!btn) return;
+    if (favs.includes(id)) {
+      btn.innerHTML = '<span class="fav-icon">&#9733;</span> Unfavourite';
+    } else {
+      btn.innerHTML = '<span class="fav-icon">&#9734;</span> Favourite';
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded', updateAllButtons);
+</script>
 {% endblock %}

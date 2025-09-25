@@ -1,7 +1,254 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="category-page">
-  <h1>Ball-handling</h1>
-  <p>Explore ball-handling drills and resources to boost your control and agility.</p>
+<section class="ball-handling-hero">
+  <img class="ball-handling-hero-img" src="static/images/ball-handling-drill.jpg" alt="Player in athletic stance dribbling through legs in figure 8 motion" />
+  <div class="ball-handling-hero-content">
+    <h1>Ball-Handling Drills & Skills</h1>
+    <h2>Control the Ball. Control the Game.</h2>
+    <p>Master your dribble with these progressive ball-handling drills. Build coordination, speed, and confidence for every situation on the court.</p>
+    <span class="caption">Building rhythm and control with the figure 8.</span>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <input type="text" id="drill-search" placeholder="Search drills, skills, or focus..." />
+  <select id="skill-filter">
+    <option value="">All Skill Levels</option>
+    <option value="Beginner">Beginner</option>
+    <option value="Intermediate">Intermediate</option>
+    <option value="Advanced">Advanced</option>
+  </select>
+  <select id="focus-filter">
+    <option value="">All Focus Areas</option>
+    <option value="Control & Coordination">Control & Coordination</option>
+    <option value="Change of Direction">Change of Direction</option>
+    <option value="Hand Speed & Ambidexterity">Hand Speed & Ambidexterity</option>
+    <option value="Ambidexterity & Focus">Ambidexterity & Focus</option>
+    <option value="Speed & Directional Control">Speed & Directional Control</option>
+  </select>
+  <button id="clear-filters">Clear</button>
 </div>
+
+<section class="favorites-section">
+  <h2>Drills</h2>
+  <div class="drill-cards" id="drill-cards">
+    <div class="drill-card" data-drill-id="figure-8-dribble">
+      <img class="drill-img" src="static/images/figure-8-dribble.jpg" alt="Player in athletic stance dribbling through legs in figure 8 motion" />
+      <h3>Figure 8 Dribble</h3>
+      <span class="skill-tag">Beginner</span>
+      <span class="focus-tag">Control & Coordination</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Stand with feet shoulder-width apart, knees bent.</li>
+        <li>Dribble the ball in a figure 8 pattern around and between your legs.</li>
+        <li>Keep the ball low and controlled, using fingertips.</li>
+        <li>Perform with dominant hand, then switch to non-dominant.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>3 sets of 30 seconds per hand</li>
+        <li>Rest 30 seconds between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Stay low, stay loose."</b> This drill builds hand speed and coordination.</p>
+      <span class="caption">Building rhythm and control with the figure 8.</span>
+      <button class="fav-btn" onclick="toggleFavorite('figure-8-dribble', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="cone-crossover-drill">
+      <img class="drill-img" src="static/images/cone-crossover.jpg" alt="Player crossing over at a cone with eyes up" />
+      <h3>Cone Crossover Drill</h3>
+      <span class="skill-tag">Intermediate</span>
+      <span class="focus-tag">Change of Direction</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Set up 4–5 cones in a straight line, spaced 3 feet apart.</li>
+        <li>Dribble toward each cone and perform a crossover move to switch hands.</li>
+        <li>Keep eyes up and maintain low stance.</li>
+        <li>Repeat back and forth across the cone line.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>4 sets of 2 full runs (down and back)</li>
+        <li>Rest 45 seconds between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Snap the crossover, protect the ball."</b> Simulates defender pressure.</p>
+      <span class="caption">Mastering change of direction with cone control.</span>
+      <button class="fav-btn" onclick="toggleFavorite('cone-crossover-drill', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="spider-dribble">
+      <img class="drill-img" src="static/images/spider-dribble.jpg" alt="Overhead shot of player spider-dribbling under body" />
+      <h3>Spider Dribble</h3>
+      <span class="skill-tag">Intermediate</span>
+      <span class="focus-tag">Hand Speed & Ambidexterity</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Stand with feet wide and knees bent.</li>
+        <li>Dribble the ball rapidly in front and behind you using alternating hands.</li>
+        <li>Keep the ball centered under your body.</li>
+        <li>Focus on rhythm and speed.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>3 sets of 20 seconds</li>
+        <li>Rest 30 seconds between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Fast hands, quiet feet."</b> Builds rapid hand coordination.</p>
+      <span class="caption">Quick hands build elite control.</span>
+      <button class="fav-btn" onclick="toggleFavorite('spider-dribble', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="two-ball-dribble">
+      <img class="drill-img" src="static/images/two-ball-dribble.jpg" alt="Player dribbling two balls with intense focus" />
+      <h3>Stationary Two-Ball Dribble</h3>
+      <span class="skill-tag">Advanced</span>
+      <span class="focus-tag">Ambidexterity & Focus</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Stand in athletic stance with a ball in each hand.</li>
+        <li>Dribble both balls simultaneously at medium height.</li>
+        <li>Alternate between high-low, side-to-side, and staggered rhythms.</li>
+        <li>Keep eyes forward and body stable.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>3 sets of 30 seconds per variation</li>
+        <li>Rest 1 minute between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Train both hands equally."</b> Builds symmetrical control and focus.</p>
+      <span class="caption">Double the challenge, double the control.</span>
+      <button class="fav-btn" onclick="toggleFavorite('two-ball-dribble', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+    <div class="drill-card" data-drill-id="z-pattern-dribble">
+      <img class="drill-img" src="static/images/z-pattern-dribble.jpg" alt="Player sprinting through cones with sharp crossover" />
+      <h3>Z-Pattern Speed Dribble</h3>
+      <span class="skill-tag">Advanced</span>
+      <span class="focus-tag">Speed & Directional Control</span>
+      <h4>Instructions:</h4>
+      <ul>
+        <li>Set up cones in a zigzag (Z) pattern across the court.</li>
+        <li>Sprint while dribbling, changing direction at each cone.</li>
+        <li>Use crossover or behind-the-back moves at each turn.</li>
+        <li>Finish with a controlled stop or layup.</li>
+      </ul>
+      <h4>Reps & Sets:</h4>
+      <ul>
+        <li>3 sets of full Z-pattern runs</li>
+        <li>Rest 90 seconds between sets</li>
+      </ul>
+      <h4>Coaching Cue:</h4>
+      <p><b>"Speed with control."</b> Simulates game-like directional shifts.</p>
+      <span class="caption">Player sprinting through cones with sharp crossover.</span>
+      <button class="fav-btn" onclick="toggleFavorite('z-pattern-dribble', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
+    </div>
+  </div>
+</section>
+
+<script>
+// Ball-handling drill filter logic
+const searchInput = document.getElementById('drill-search');
+const skillFilter = document.getElementById('skill-filter');
+const focusFilter = document.getElementById('focus-filter');
+const clearBtn = document.getElementById('clear-filters');
+const drillCards = Array.from(document.querySelectorAll('.drill-card'));
+
+function normalize(text) {
+  return text.toLowerCase().replace(/\s+/g, '');
+}
+
+function filterDrills() {
+  const searchVal = normalize(searchInput.value);
+  const skillVal = skillFilter.value;
+  const focusVal = focusFilter.value;
+
+  drillCards.forEach(card => {
+    const name = normalize(card.querySelector('h3').textContent);
+    const instructions = normalize(card.querySelector('ul').textContent);
+    const skill = card.querySelector('.skill-tag').textContent;
+    const focus = card.querySelector('.focus-tag').textContent;
+    let matches = true;
+    if (searchVal && !(name.includes(searchVal) || instructions.includes(searchVal) || normalize(skill).includes(searchVal) || normalize(focus).includes(searchVal))) {
+      matches = false;
+    }
+    if (skillVal && skill !== skillVal) {
+      matches = false;
+    }
+    if (focusVal && focus !== focusVal) {
+      matches = false;
+    }
+    card.style.display = matches ? '' : 'none';
+  });
+}
+
+searchInput.addEventListener('input', filterDrills);
+skillFilter.addEventListener('change', filterDrills);
+focusFilter.addEventListener('change', filterDrills);
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  skillFilter.value = '';
+  focusFilter.value = '';
+  filterDrills();
+});
+
+// Favorite functionality
+function getFavorites() {
+  return JSON.parse(localStorage.getItem('favorites') || '[]');
+}
+function setFavorites(favs) {
+  localStorage.setItem('favorites', JSON.stringify(favs));
+}
+function toggleFavorite(id, btn) {
+  let favs = getFavorites();
+  const isFav = favs.includes(id);
+  if (isFav) {
+    favs = favs.filter(f => f !== id);
+    btn.innerHTML = '<span class="fav-icon">&#9734;</span> Favourite';
+  } else {
+    favs.push(id);
+    btn.innerHTML = '<span class="fav-icon">&#9733;</span> Unfavourite';
+  }
+  setFavorites(favs);
+  updateAllButtons();
+}
+function updateAllButtons() {
+  const favs = getFavorites();
+  document.querySelectorAll('.drill-card').forEach(card => {
+    const id = card.getAttribute('data-drill-id');
+    const btn = card.querySelector('.fav-btn');
+    if (!btn) return;
+    if (favs.includes(id)) {
+      btn.innerHTML = '<span class="fav-icon">&#9733;</span> Unfavourite';
+    } else {
+      btn.innerHTML = '<span class="fav-icon">&#9734;</span> Favourite';
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded', updateAllButtons);
+</script>
+
+<style>
+.ball-handling-hero { background: linear-gradient(120deg, #274472 60%, #A3CEF1 100%); padding: 2rem 0; text-align: center; }
+.ball-handling-hero-img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 0 0 32px 32px; filter: brightness(0.7) blur(1px); }
+.ball-handling-hero-content { position: relative; z-index: 2; color: #fff; max-width: 700px; margin: 0 auto; }
+.ball-handling-hero h1 { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.ball-handling-hero h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; }
+.ball-handling-hero p { font-size: 1.1rem; }
+.caption { display: block; font-size: 0.95rem; color: #A3CEF1; margin-top: 0.5rem; }
+.favorites-section { background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(39,68,114,0.10); margin: 2rem auto; max-width: 900px; padding: 2rem 2.5rem; }
+.filter-bar { display: flex; gap: 1rem; margin-bottom: 2rem; align-items: center; flex-wrap: wrap; }
+.filter-bar input, .filter-bar select { padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #A3CEF1; font-size: 1rem; }
+.filter-bar button { padding: 0.5rem 1.2rem; border-radius: 8px; background: #274472; color: #fff; border: none; font-weight: 600; cursor: pointer; }
+.filter-bar button:hover { background: #A3CEF1; color: #274472; }
+.drill-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+.drill-card { background: #F6F6F6; border-radius: 16px; box-shadow: 0 2px 12px rgba(39,68,114,0.08); padding: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; transition: transform 0.2s, box-shadow 0.2s; }
+.drill-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 6px 24px rgba(39,68,114,0.12); }
+.drill-img { width: 100%; max-width: 180px; border-radius: 12px; margin-bottom: 1rem; object-fit: cover; background: #eaeaea; }
+.skill-tag, .focus-tag { background: #A3CEF1; color: #274472; border-radius: 6px; padding: 0.2rem 0.7rem; font-size: 0.95rem; font-weight: 600; margin-right: 0.5rem; margin-top: 0.5rem; }
+.caption { font-size: 0.95rem; color: #A3CEF1; margin-top: 0.5rem; }
+.fav-btn { background: none; border: none; color: #274472; font-size: 1rem; cursor: pointer; display: flex; align-items: center; margin-top: auto; }
+.fav-icon { margin-right: 0.3rem; }
+.fav-btn.favorited { color: #e74c3c; }
+@media (max-width: 900px) { .drill-cards { grid-template-columns: 1fr; gap: 1rem; } .favorites-section { padding: 1.2rem 0.7rem; } }
+</style>
 {% endblock %}

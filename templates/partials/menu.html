@@ -1,15 +1,148 @@
-<nav class="navbar-full">
-  <div class="navbar-content">
-    <img src="static/images/logo.png" alt="HoopTutor site logo." />
-    <h1>HoopTutor</h1>
-    <ul class="topnav">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="shooting.html">Shooting</a></li>
-      <li><a href="ball-handling.html">Ball-handling</a></li>
-      <li><a href="defense.html">Defense</a></li>
-      <li><a href="fitness.html">Fitness</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="resources.html">Resources</a></li>
-    </ul>
+<nav class="main-menu">
+  <div class="main-menu-inner">
+    <img src="static/images/logo-placeholder.png" alt="HoopTutor logo placeholder (replace with your logo)" class="menu-logo-img" />
+    <a href="/" class="menu-logo">HoopTutor</a>
+    <div class="menu-links">
+      <a href="/" class="menu-btn {% if active_page == 'home' %}active{% endif %}">HOME</a>
+      <a href="/shooting.html" class="menu-btn {% if active_page == 'shooting' %}active{% endif %}">SHOOTING</a>
+      <a href="/ball-handling.html" class="menu-btn {% if active_page == 'ball-handling' %}active{% endif %}">BALL-HANDLING</a>
+      <a href="/defense.html" class="menu-btn {% if active_page == 'defense' %}active{% endif %}">DEFENSE</a>
+      <a href="/fitness.html" class="menu-btn {% if active_page == 'fitness' %}active{% endif %}">FITNESS</a>
+      <a href="/library.html" class="menu-btn {% if active_page == 'library' %}active{% endif %}">LIBRARY</a>
+      <a href="/login" class="menu-btn {% if active_page == 'login' %}active{% endif %}">SIGN UP</a>
+      <a href="/about.html" class="menu-btn {% if active_page == 'about' %}active{% endif %}">ABOUT</a>
+    </div>
+    <div class="menu-profile" id="menu-profile" style="display:none;align-items:center;gap:0.5rem;margin-left:1.5rem;">
+      <a href="/profile" style="display:flex;align-items:center;text-decoration:none;">
+        <img src="static/images/avatar1.png" alt="Profile" style="width:32px;height:32px;border-radius:50%;background:#A3CEF1;" />
+        <span id="menu-profile-name" style="color:#A3CEF1;font-weight:700;font-size:1.1rem;margin-left:0.5rem;"></span>
+      </a>
+    </div>
   </div>
 </nav>
+<style>
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-menu {
+  width: 100%;
+  min-width: 100%;
+  left: 0;
+  right: 0;
+  background: #274472;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-sizing: border-box;
+}
+.main-menu-inner {
+  width: 100%;                /* Ensures it fills the parent */
+  max-width: none;            /* Removes any implicit constraint */
+  flex-grow: 1;               /* Allows it to expand inside flex container */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.7rem 2rem;
+  box-sizing: border-box;
+}
+
+.menu-logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  margin-right: 1rem;
+  border-radius: 8px;
+  background: #A3CEF1;
+}
+.menu-logo {
+  color: #A3CEF1;
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: none;
+  margin-right: 2rem;
+}
+.menu-links {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  flex-wrap: wrap;
+}
+.menu-btn {
+  color: #fff;
+  background: transparent;
+  border: 2px solid transparent;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  display: inline-block;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.menu-btn.active {
+  background: #A3CEF1;
+  color: #274472;
+  border: 2px solid #274472;
+  box-shadow: 0 2px 8px rgba(39,68,114,0.10);
+}
+.menu-btn:hover {
+  background: #A3CEF1;
+  color: #274472;
+}
+@media (max-width: 1200px) {
+  .main-menu-inner { padding: 0.7rem 0.5rem; }
+  .menu-logo { font-size: 1.3rem; margin-right: 1rem; }
+  .menu-logo-img { width: 32px; height: 32px; margin-right: 0.5rem; }
+  .menu-btn { font-size: 1rem; padding: 0.5rem 0.7rem; }
+}
+@media (max-width: 900px) {
+  .main-menu-inner { flex-wrap: wrap; padding: 0.5rem 0.2rem; }
+  .menu-logo { font-size: 1rem; margin-right: 0.5rem; }
+  .menu-logo-img { width: 24px; height: 24px; margin-right: 0.2rem; }
+  .menu-btn { font-size: 0.95rem; padding: 0.4rem 0.4rem; }
+}
+</style>
+<script>
+function updateMenuProfile() {
+  var profile = JSON.parse(localStorage.getItem('profile') || '{}');
+  var menuProfile = document.getElementById('menu-profile');
+  var menuProfileName = document.getElementById('menu-profile-name');
+  var menuProfileImg = menuProfile.querySelector('img');
+  if (profile.name) {
+    menuProfile.style.display = 'flex';
+    menuProfileName.textContent = profile.name;
+    // If you want to support custom avatars, use profile.avatar here
+    menuProfileImg.src = profile.avatar || 'static/images/avatar1.png';
+  } else {
+    menuProfile.style.display = 'none';
+  }
+}
+async function fetchUserProfile() {
+  try {
+    const response = await fetch('/api/me');
+    if (response.ok) {
+      const profile = await response.json();
+      localStorage.setItem('profile', JSON.stringify(profile));
+      updateMenuProfile();
+    } else {
+      localStorage.removeItem('profile');
+      updateMenuProfile();
+    }
+  } catch (err) {
+    console.error("Error fetching profile:", err);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', fetchUserProfile);
+window.addEventListener('storage', updateMenuProfile);
+</script>
