@@ -1,57 +1,19 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="profile-container">
-  <h1>Your Profile</h1>
-  <div class="profile-card">
-    <img src="static/images/avatar1.png" alt="Profile avatar" class="profile-avatar" />
-    <div class="profile-info">
-      <h2 id="profile-name">Name</h2>
-      <p id="profile-email">Email</p>
+<section class="profile-card" data-page="profile">
+  <h1>Your HoopTutor profile</h1>
+  <div class="profile-card__body">
+    <img class="profile-card__avatar" id="profile-avatar" src="{{ url_for('static', filename='images/user.jpg') }}" alt="Profile avatar" />
+    <div class="profile-card__meta">
+      <h2 id="profile-name">Player</h2>
+      <p id="profile-email">Tap “Sign up” to add your details.</p>
     </div>
   </div>
-</div>
-<style>
-.profile-container {
-  max-width: 400px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background: #f7faff;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px rgba(39,68,114,0.08);
-  text-align: center;
-}
-.profile-card {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(39,68,114,0.10);
-  padding: 1.5rem;
-}
-.profile-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  background: #A3CEF1;
-}
-.profile-info h2 {
-  color: #274472;
-  margin-bottom: 0.5rem;
-}
-.profile-info p {
-  color: #274472;
-  font-size: 1.1rem;
-}
-</style>
-<script>
-// Load profile from localStorage
-const profile = JSON.parse(localStorage.getItem('profile') || '{}');
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('profile-name').textContent = profile.name || 'Name';
-  document.getElementById('profile-email').textContent = profile.email || 'Email';
-});
-</script>
+  <ul class="profile-details">
+    <li id="profile-dob">Birthday: —</li>
+    <li id="profile-gender">Gender: —</li>
+    <li id="profile-position">Position: —</li>
+  </ul>
+  <button class="btn btn--ghost" type="button" data-action="clear-profile">Clear saved profile</button>
+</section>
 {% endblock %}

@@ -1,69 +1,50 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="login-container">
-  <h1>Sign Up</h1>
-  <form id="signup-form" method="POST" action="/signup">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required />
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required />
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required />
-    <button type="submit">Sign Up</button>
+<section class="auth-card" data-page="login">
+  <h1>Create your HoopTutor profile</h1>
+  <form id="signup-form">
+    <div class="form-field">
+      <label for="signup-name">Full name</label>
+      <input id="signup-name" name="name" type="text" autocomplete="name" required />
+    </div>
+    <div class="form-field">
+      <label for="signup-email">Email</label>
+      <input id="signup-email" name="email" type="email" autocomplete="email" required />
+    </div>
+    <div class="form-field">
+      <label for="signup-password">Password</label>
+      <input id="signup-password" name="password" type="password" minlength="6" required />
+    </div>
+    <div class="form-field">
+      <label for="signup-dob">Date of birth</label>
+      <input id="signup-dob" name="dob" type="date" required />
+    </div>
+    <div class="form-field">
+      <label for="signup-gender">Gender</label>
+      <select id="signup-gender" name="gender" required>
+        <option value="" disabled selected>Choose one</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+        <option value="Non-binary">Non-binary</option>
+        <option value="Prefer not to say">Prefer not to say</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label for="signup-position">Primary position</label>
+      <select id="signup-position" name="position" required>
+        <option value="" disabled selected>Select your role</option>
+        <option value="Point Guard">Point Guard</option>
+        <option value="Shooting Guard">Shooting Guard</option>
+        <option value="Small Forward">Small Forward</option>
+        <option value="Power Forward">Power Forward</option>
+        <option value="Center">Center</option>
+        <option value="All-rounder">All-rounder</option>
+      </select>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn--primary" type="submit">Join HoopTutor</button>
+    </div>
   </form>
-</div>
-<style>
-.login-container {
-  max-width: 400px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background: #f7faff;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px rgba(39,68,114,0.08);
-  text-align: center;
-}
-.login-container h1 {
-  color: #274472;
-  margin-bottom: 1.5rem;
-}
-.login-container label {
-  display: block;
-  margin: 1rem 0 0.3rem 0;
-  color: #274472;
-  font-weight: 600;
-}
-.login-container input {
-  width: 90%;
-  padding: 0.7rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  border: 1px solid #A3CEF1;
-  font-size: 1rem;
-}
-.login-container button {
-  background: #274472;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.login-container button:hover {
-  background: #A3CEF1;
-  color: #274472;
-}
-</style>
-<script>
-document.getElementById('signup-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var name = document.getElementById('name').value;
-  var email = document.getElementById('email').value;
-  var password = document.getElementById('password').value;
-  localStorage.setItem('profile', JSON.stringify({name: name, email: email, password: password}));
-  window.location.href = '/profile';
-});
-</script>
+  <p class="tagline">We store your details securely so coaches can customise training plans. You can update them any time.</p>
+</section>
 {% endblock %}

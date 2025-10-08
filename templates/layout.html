@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
-    <link rel="stylesheet" href="static/css/style.css" />
-    <title>VSCode Extension Catalogue</title>
-    <link rel="manifest" href="static/manifest.json" />
-    <link rel="icon" type="image/x-icon" href="static/images/favicon.png" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="HoopTutor is a basketball training resource hub with curated drills, filters, and offline-ready access." />
+    <meta name="theme-color" content="#274472" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}" />
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}" />
+    <title>HoopTutor – Basketball Training Resources</title>
   </head>
-
-  <body>
+  <body data-page="{{ active_page|default('') }}">
+    <div class="offline-banner" id="offline-banner">You are offline. Saved drills remain available.</div>
+    {% include 'partials/menu.html' %}
     <main>
-      {% include "partials/menu.html" %} {% block content %}{% endblock %}
+      {% block content %}{% endblock %}
     </main>
-    <script src="static/js/app.js"></script>
+    <script type="module" src="{{ url_for('static', filename='js/app.js') }}"></script>
   </body>
 </html>

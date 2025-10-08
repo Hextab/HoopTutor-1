@@ -1,0 +1,539 @@
+{
+  "categories": [
+    {
+      "id": "shooting",
+      "name": "Shooting",
+      "heroImage": "static/images/shooting-action.jpg",
+      "headline": "Master Your Shot",
+      "tagline": "Consistent form, confident release, game-ready range.",
+      "description": "A curated path from fundamentals to advanced shot creation so every player can find a smooth, repeatable jumper.",
+      "focusAreas": [
+        "Form",
+        "Catch & Shoot",
+        "Off Dribble",
+        "Game Simulation"
+      ]
+    },
+    {
+      "id": "ball-handling",
+      "name": "Ball-handling",
+      "heroImage": "static/images/ball-handling-drill.jpg",
+      "headline": "Control the Ball",
+      "tagline": "Confident handles under pressure from baseline to buzzer.",
+      "description": "Progressive dribbling workouts designed to sharpen coordination, speed, deception, and floor vision.",
+      "focusAreas": [
+        "Control & Coordination",
+        "Change of Direction",
+        "Hand Speed & Ambidexterity",
+        "Ambidexterity & Focus",
+        "Speed & Directional Control"
+      ]
+    },
+    {
+      "id": "defense",
+      "name": "Defense",
+      "heroImage": "static/images/defense-drill.jpg",
+      "headline": "Own Every Possession",
+      "tagline": "Footwork, communication, and hustle that travel from practice to playoffs.",
+      "description": "Lockdown drills that develop stance discipline, reaction speed, and five-on-a-string team defense.",
+      "focusAreas": [
+        "Lateral Movement & Stance",
+        "Shot Containment & Recovery",
+        "Reaction & Footwork",
+        "Positioning & Communication",
+        "Hustle & Paint Protection"
+      ]
+    },
+    {
+      "id": "fitness",
+      "name": "Fitness",
+      "heroImage": "static/images/fitness-drill.jpg",
+      "headline": "Stronger. Faster. Fitter.",
+      "tagline": "Basketball-specific conditioning that builds explosive power and resilience.",
+      "description": "Integrated strength, agility, and recovery sessions to keep athletes performing at their peak.",
+      "focusAreas": [
+        "Power & Strength",
+        "Agility & Footwork",
+        "Endurance",
+        "Recovery",
+        "Mobility"
+      ]
+    }
+  ],
+  "drills": [
+    {
+      "id": "wall-shooting",
+      "categoryId": "shooting",
+      "title": "Wall Form Shooting",
+      "summary": "Groove clean mechanics without chasing rebounds by isolating form against a wall.",
+      "skillLevel": "Beginner",
+      "focus": "Form",
+      "media": {
+        "type": "image",
+        "url": "static/images/wall-shooting.jpg"
+      },
+      "duration": "3 x 20 reps",
+      "equipment": [
+        "Basketball",
+        "Flat wall"
+      ],
+      "instructions": [
+        "Stand 1\u20132 feet from the wall with balanced feet and knees bent.",
+        "Lock guide hand on the side, keep eyes on a target spot.",
+        "Shoot softly, ensuring follow-through ends with fingers pointed at target.",
+        "Track arc and rotation; adjust grip and elbow alignment as needed."
+      ],
+      "coachingCue": "Quiet feet, loud wrist."
+    },
+    {
+      "id": "one-hand-shooting",
+      "categoryId": "shooting",
+      "title": "One-Hand Form Shooting",
+      "summary": "Build wrist snap and release consistency using only the shooting hand.",
+      "skillLevel": "Beginner",
+      "focus": "Form",
+      "media": {
+        "type": "image",
+        "url": "static/images/one-hand-shooting.jpg"
+      },
+      "duration": "4 x 10 makes",
+      "equipment": [
+        "Basketball",
+        "Hoop"
+      ],
+      "instructions": [
+        "Start 3\u20135 feet from the basket; guide hand stays behind your back.",
+        "Bend knees, lift through toes, and finish with full extension.",
+        "Hold follow-through until the ball drops through.",
+        "Move back one step after each successful set."
+      ],
+      "coachingCue": "Elbow under the ball, fingers to the sky."
+    },
+    {
+      "id": "elbow-shooting",
+      "categoryId": "shooting",
+      "title": "Elbow to Elbow Rhythm Shooting",
+      "summary": "Develop mid-range confidence by repping both elbows with game-footwork.",
+      "skillLevel": "Intermediate",
+      "focus": "Form",
+      "media": {
+        "type": "image",
+        "url": "static/images/elbow-shooting.jpg"
+      },
+      "duration": "6 spots x 10 shots",
+      "equipment": [
+        "Basketball",
+        "Hoop"
+      ],
+      "instructions": [
+        "Start at right elbow with inside foot pivot; lift into balanced jumper.",
+        "Slide to left elbow and repeat; use inside-foot pivots on each catch.",
+        "Add a shot fake + side dribble after each 10 makes for variety.",
+        "Record makes/misses to track progress."
+      ],
+      "coachingCue": "Land exactly where you lift."
+    },
+    {
+      "id": "catch-shoot",
+      "categoryId": "shooting",
+      "title": "Pass, Catch & Shoot Series",
+      "summary": "Simulate game tempo with quick catches, square-ups, and immediate release.",
+      "skillLevel": "Intermediate",
+      "focus": "Catch & Shoot",
+      "media": {
+        "type": "image",
+        "url": "static/images/catch-shoot.jpg"
+      },
+      "duration": "5 rounds x 8 reps",
+      "equipment": [
+        "Basketball",
+        "Partner"
+      ],
+      "instructions": [
+        "Partner delivers chest pass; catch on hop with hands ready.",
+        "Square shoulders midair, land balanced, release in one motion.",
+        "Alternate left/right catches to mimic relocation.",
+        "Sprint to next spot after each make; repeat for wing, corner, top.",
+        "Optional: add defender closing out for pressure."
+      ],
+      "coachingCue": "Catch low, rise high."
+    },
+    {
+      "id": "step-back",
+      "categoryId": "shooting",
+      "title": "Step-Back Separation Drill",
+      "summary": "Create space with powerful brakes and pop-back balance before knocking it down.",
+      "skillLevel": "Advanced",
+      "focus": "Off Dribble",
+      "media": {
+        "type": "video",
+        "url": "https://www.youtube.com/embed/eSER3JvKb1g"
+      },
+      "duration": "4 sets x 8 reps",
+      "equipment": [
+        "Basketball",
+        "Cones"
+      ],
+      "instructions": [
+        "Attack forward with two hard dribbles; plant inside foot.",
+        "Push back explosively, landing behind original spot.",
+        "Square shoulders mid-air; shoot on controlled balance.",
+        "Alternate left/right finishes, add counter (cross-step) on final set."
+      ],
+      "coachingCue": "Create space, stay balanced."
+    },
+    {
+      "id": "figure-8-dribble",
+      "categoryId": "ball-handling",
+      "title": "Figure 8 Control Drill",
+      "summary": "Fine-tune touch and coordination weaving the ball around your legs.",
+      "skillLevel": "Beginner",
+      "focus": "Control & Coordination",
+      "media": {
+        "type": "image",
+        "url": "static/images/figure-8-dribble.jpg"
+      },
+      "duration": "3 x 30 seconds per hand",
+      "equipment": [
+        "Basketball"
+      ],
+      "instructions": [
+        "Stand wide, stay low, and pound the ball around each leg in a figure 8.",
+        "Use fingertips for control; keep eyes forward.",
+        "Switch directions and hands every 30 seconds.",
+        "Add two-ball variation for advanced challenge."
+      ],
+      "coachingCue": "Stay low, stay loose."
+    },
+    {
+      "id": "cone-crossover",
+      "categoryId": "ball-handling",
+      "title": "Cone Crossover Gauntlet",
+      "summary": "Sharpen violent change-of-direction moves under control through a cone alley.",
+      "skillLevel": "Intermediate",
+      "focus": "Change of Direction",
+      "media": {
+        "type": "image",
+        "url": "static/images/cone-crossover.jpg"
+      },
+      "duration": "4 sets of down-and-backs",
+      "equipment": [
+        "Basketball",
+        "5 cones"
+      ],
+      "instructions": [
+        "Space cones 3 feet apart; sprint to each, plant outside foot.",
+        "Snap crossover tight to body, burst to next cone.",
+        "Finish each run with controlled floater or layup.",
+        "Progress to behind-the-back and between-the-legs series."
+      ],
+      "coachingCue": "Snap the crossover, protect the ball."
+    },
+    {
+      "id": "spider-dribble",
+      "categoryId": "ball-handling",
+      "title": "Spider Speed Series",
+      "summary": "Explode hand speed by alternating front/back taps under the hips.",
+      "skillLevel": "Intermediate",
+      "focus": "Hand Speed & Ambidexterity",
+      "media": {
+        "type": "image",
+        "url": "static/images/spider-dribble.jpg"
+      },
+      "duration": "5 rounds x 20 seconds",
+      "equipment": [
+        "Basketball"
+      ],
+      "instructions": [
+        "Tap ball in front with right, then back with right, repeat with left.",
+        "Keep hips low, torso still, eyes ahead.",
+        "Count total taps each round to gamify progress.",
+        "Add two-ball spider for advanced athletes."
+      ],
+      "coachingCue": "Fast hands, quiet feet."
+    },
+    {
+      "id": "two-ball-sync",
+      "categoryId": "ball-handling",
+      "title": "Two-Ball Rhythm Builder",
+      "summary": "Train both hands equally with simultaneous and alternating pound dribbles.",
+      "skillLevel": "Advanced",
+      "focus": "Ambidexterity & Focus",
+      "media": {
+        "type": "image",
+        "url": "static/images/two-ball-dribble.jpg"
+      },
+      "duration": "3 x 45 seconds",
+      "equipment": [
+        "Two basketballs"
+      ],
+      "instructions": [
+        "Start with simultaneous waist-high pounds for 15 seconds.",
+        "Switch to alternating dribbles, then high-low combo.",
+        "Stay balanced with still torso and eyes up.",
+        "Add movement (walk to baseline and back) on final round."
+      ],
+      "coachingCue": "Train both hands equally."
+    },
+    {
+      "id": "z-pattern-dribble",
+      "categoryId": "ball-handling",
+      "title": "Z-Pattern Attack & Burst",
+      "summary": "Combine speed and deception by attacking zig-zag cones with varied finishes.",
+      "skillLevel": "Advanced",
+      "focus": "Speed & Directional Control",
+      "media": {
+        "type": "image",
+        "url": "static/images/z-pattern-dribble.jpg"
+      },
+      "duration": "3 x full-court runs",
+      "equipment": [
+        "Basketball",
+        "6 cones"
+      ],
+      "instructions": [
+        "Set cones in staggered Z pattern across court.",
+        "Explode to each cone with change-of-pace dribble move.",
+        "Finish with power layup or pull-up at baseline.",
+        "Run final set vs. live defender for pressure."
+      ],
+      "coachingCue": "Speed with control."
+    },
+    {
+      "id": "zig-zag-slides",
+      "categoryId": "defense",
+      "title": "Zig-Zag Slide Series",
+      "summary": "Build lateral quickness and stance endurance the length of the court.",
+      "skillLevel": "Beginner",
+      "focus": "Lateral Movement & Stance",
+      "media": {
+        "type": "image",
+        "url": "static/images/defense-drill.jpg"
+      },
+      "duration": "3 x full-court",
+      "equipment": [
+        "Floor markers"
+      ],
+      "instructions": [
+        "Start in low stance; slide to angled marker without crossing feet.",
+        "Drop hips on each change, recover with quick first step.",
+        "Sprint to baseline after third slide to simulate transition.",
+        "Repeat facing opposite direction."
+      ],
+      "coachingCue": "Chest up, feet wide, hands alive."
+    },
+    {
+      "id": "closeout-drill",
+      "categoryId": "defense",
+      "title": "High-Hand Closeouts",
+      "summary": "Sharpen approach speed and control when contesting shooters.",
+      "skillLevel": "Intermediate",
+      "focus": "Shot Containment & Recovery",
+      "media": {
+        "type": "image",
+        "url": "static/images/closeout-drill.jpg"
+      },
+      "duration": "4 x 5 reps per side",
+      "equipment": [
+        "Partner",
+        "Basketballs"
+      ],
+      "instructions": [
+        "Start in help position; on pass, sprint to shooter.",
+        "Chop feet to avoid overrunning; contest with outside hand.",
+        "Slide to cut baseline drive if shooter attacks.",
+        "Rotate back to help spot; repeat from weak-side."
+      ],
+      "coachingCue": "Sprint, chop, contest."
+    },
+    {
+      "id": "mirror-drill",
+      "categoryId": "defense",
+      "title": "Mirror Reaction Drill",
+      "summary": "1-on-1 partner shadowing to develop instincts and discipline.",
+      "skillLevel": "Intermediate",
+      "focus": "Reaction & Footwork",
+      "media": {
+        "type": "image",
+        "url": "static/images/mirror-drill.jpg"
+      },
+      "duration": "3 sets x 30 seconds",
+      "equipment": [
+        "Partner"
+      ],
+      "instructions": [
+        "Leader moves randomly within marked box for 30 seconds.",
+        "Defender mirrors with quick slides, no hopping.",
+        "Swap roles; focus on eyes on hips of the leader.",
+        "Add ball fakes and spins for advanced challenge."
+      ],
+      "coachingCue": "React, don't reach."
+    },
+    {
+      "id": "shell-drill",
+      "categoryId": "defense",
+      "title": "4-Out Shell Communication",
+      "summary": "Team defensive staple emphasising rotation, help, and talk.",
+      "skillLevel": "Advanced",
+      "focus": "Positioning & Communication",
+      "media": {
+        "type": "image",
+        "url": "static/images/shell-drill.jpg"
+      },
+      "duration": "3 x 90-second segments",
+      "equipment": [
+        "8 players",
+        "Coach"
+      ],
+      "instructions": [
+        "Align four offensive players around perimeter; defense reacts to passes.",
+        "Practice jump-to-ball, help-and-recover, and weak-side stunts.",
+        "Add dribble penetration and skip passes; require verbal tags.",
+        "Finish with live 4-on-4 closeout to contest shot."
+      ],
+      "coachingCue": "Talk early, move smart."
+    },
+    {
+      "id": "transition-recovery",
+      "categoryId": "defense",
+      "title": "Transition Sprint & Protect",
+      "summary": "Simulate odd-man breaks to ingrain urgency and paint protection.",
+      "skillLevel": "Advanced",
+      "focus": "Hustle & Paint Protection",
+      "media": {
+        "type": "image",
+        "url": "static/images/transition-recovery.jpg"
+      },
+      "duration": "4 waves x 3 possessions",
+      "equipment": [
+        "7 players",
+        "Coach"
+      ],
+      "instructions": [
+        "Begin 3 defenders vs 4 attackers; offense pushes in transition.",
+        "First defender stops ball, others protect rim and shooters.",
+        "After shot, sprint to opposite end with roles flipped.",
+        "Track stops to benchmark urgency."
+      ],
+      "coachingCue": "First back stops ball."
+    },
+    {
+      "id": "power-lunge-complex",
+      "categoryId": "fitness",
+      "title": "Power Lunge Strength Complex",
+      "summary": "Lower-body strength session that translates to explosive first steps.",
+      "skillLevel": "All Levels",
+      "focus": "Power & Strength",
+      "media": {
+        "type": "image",
+        "url": "static/images/fitness-drill.jpg"
+      },
+      "duration": "3 rounds ~15 minutes",
+      "equipment": [
+        "Dumbbells",
+        "Box"
+      ],
+      "instructions": [
+        "12 alternating reverse lunges with dumbbells.",
+        "10 explosive split squat jumps (bodyweight).",
+        "8 single-leg box step-ups each leg focusing on drive.",
+        "Rest 60 seconds; repeat for three quality rounds."
+      ],
+      "coachingCue": "Drive knee through, land softly."
+    },
+    {
+      "id": "ladder-agility",
+      "categoryId": "fitness",
+      "title": "Footwork Ladder Flow",
+      "summary": "High-tempo coordination ladder to sharpen foot speed and balance.",
+      "skillLevel": "All Levels",
+      "focus": "Agility & Footwork",
+      "media": {
+        "type": "video",
+        "url": "https://www.youtube.com/embed/kj1wfv6LhfU"
+      },
+      "duration": "6 patterns x 20 seconds",
+      "equipment": [
+        "Agility ladder"
+      ],
+      "instructions": [
+        "Run in-in-out pattern down ladder, light on feet.",
+        "Add icky shuffle, lateral in-in-out, and crossover steps.",
+        "Finish with backwards run maintaining posture.",
+        "Rest 20 seconds between patterns; repeat twice."
+      ],
+      "coachingCue": "Fast feet, quiet ground contact."
+    },
+    {
+      "id": "conditioning-intervals",
+      "categoryId": "fitness",
+      "title": "Full-Court Conditioning Intervals",
+      "summary": "Basketball-specific sprint intervals mixing pace changes and finishes.",
+      "skillLevel": "Intermediate",
+      "focus": "Endurance",
+      "media": {
+        "type": "image",
+        "url": "static/images/hero-basketball-court.jpg"
+      },
+      "duration": "10 cycles x 1 minute",
+      "equipment": [
+        "Basketball",
+        "Court"
+      ],
+      "instructions": [
+        "Sprint full court for layup, jog back to baseline.",
+        "Slide laterally baseline-to-baseline, then backpedal to half court.",
+        "Finish minute with free throws under controlled breathing.",
+        "Rest 45 seconds between cycles."
+      ],
+      "coachingCue": "Control breathing, finish strong."
+    },
+    {
+      "id": "mobility-reset",
+      "categoryId": "fitness",
+      "title": "Mobility Reset & Recovery",
+      "summary": "Targeted mobility flow to keep joints healthy after intense sessions.",
+      "skillLevel": "All Levels",
+      "focus": "Mobility",
+      "media": {
+        "type": "image",
+        "url": "static/images/fitness-drill.jpg"
+      },
+      "duration": "12-minute guided flow",
+      "equipment": [
+        "Yoga mat"
+      ],
+      "instructions": [
+        "World's greatest stretch both sides (45 sec each).",
+        "Deep squat pry with thoracic reach (60 seconds).",
+        "Hip flexor pulses + hamstring sweep (45 seconds each leg).",
+        "Banded shoulder opener with controlled breathing (2 minutes)."
+      ],
+      "coachingCue": "Breathe through tension, control each range."
+    },
+    {
+      "id": "contrast-icesoak",
+      "categoryId": "fitness",
+      "title": "Contrast Recovery Protocol",
+      "summary": "Alternate hot and cold exposure to accelerate recovery between sessions.",
+      "skillLevel": "Advanced",
+      "focus": "Recovery",
+      "media": {
+        "type": "article",
+        "url": "https://p3recovery.com.au/optimal-hydrotherapy-protocol-for-enhanced-recovery/"
+      },
+      "duration": "3 cycles (12 minutes)",
+      "equipment": [
+        "Ice bath",
+        "Warm bath"
+      ],
+      "instructions": [
+        "Immerse in cold (10\u201312\u00b0C) for 2 minutes focusing on breathing.",
+        "Transition to warm (38\u201340\u00b0C) for 2 minutes to encourage blood flow.",
+        "Repeat cycle three times, ending in cold for inflammation control.",
+        "Hydrate and perform light mobility work after session."
+      ],
+      "coachingCue": "Finish cold to calm inflammation."
+    }
+  ]
+}

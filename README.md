@@ -18,6 +18,12 @@ The aim is to create an accessible hub where players of all levels can quickly f
 - "Save to Favorites" feature  
 - Mobile-friendly design for on-the-go access  
 
+## Current Build Highlights
+- Drill discovery mirrors a coach’s session planner with quick filters by skill focus, level, and equipment.
+- Saved favourites act like a personal playbook that stays available even if you lose connection at the stadium.
+- Responsive layouts keep instructions clear whether you’re courtside on a phone or planning from a laptop.
+- Player profiles capture key details (position, age, goals) so future sessions can be tailored with ease.
+
 ---
 
 **Functional Requirements**

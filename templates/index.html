@@ -1,142 +1,74 @@
 {% extends 'layout.html' %}
 {% block content %}
 <section class="hero">
-  <img class="hero-bg" src="static/images/hero-basketball-court.jpg" alt="Basketball court background" />
-  <div class="hero-content">
-    <h1 class="hero-title">HoopTutor</h1>
-    <p class="hero-subtitle">Basketball Training Resources Library</p>
-    <p class="hero-desc">
-      A curated hub for drills, workout plans, and educational content to help
-      you level up your game.
-    </p>
-    <a href="/login" class="signup-btn">Sign Up</a>
-  </div>
-</section>
-<section class="categories">
-  <a href="shooting.html" class="category-tile shooting">
-    <img class="category-img" src="static/images/shooting-drill.jpg" alt="Shooting drill" />
-    <span class="category-title">Shooting</span>
-  </a>
-  <a href="ball-handling.html" class="category-tile ball-handling">
-    <img class="category-img" src="static/images/ball-handling-drill.jpg" alt="Ball-handling drill" />
-    <span class="category-title">Ball-handling</span>
-  </a>
-  <a href="defense.html" class="category-tile defense">
-    <img class="category-img" src="static/images/defense-drill.jpg" alt="Defense drill" />
-    <span class="category-title">Defense</span>
-  </a>
-  <a href="fitness.html" class="category-tile fitness">
-    <img class="category-img" src="static/images/fitness-drill.jpg" alt="Fitness drill" />
-    <span class="category-title">Fitness</span>
-  </a>
-</section>
-<section class="reviews-section">
-  <h2 class="reviews-heading">Reviews & Success Stories</h2>
-  <div class="reviews-cards">
-    <div class="review-card">
-      <img class="review-avatar" src="static/images/avatar1.png" alt="Coach Lisa" />
-      <div class="review-content">
-        <h3>Coach Lisa</h3>
-        <p>“HoopTutor drills helped my team improve footwork and confidence. The clear instructions and visuals make it easy for players of all levels!”</p>
-        <span class="review-rating">★★★★★</span>
-      </div>
-    </div>
-    <div class="review-card">
-      <img class="review-avatar" src="static/images/avatar2.png" alt="Player Jordan" />
-      <div class="review-content">
-        <h3>Jordan (Varsity Guard)</h3>
-        <p>“I love the filter feature! I found new ball-handling drills that made a real difference in my game. Highly recommend for serious hoopers.”</p>
-        <span class="review-rating">★★★★★</span>
-      </div>
-    </div>
-    <div class="review-card">
-      <img class="review-avatar" src="static/images/avatar3.png" alt="Parent Michelle" />
-      <div class="review-content">
-        <h3>Michelle (Parent)</h3>
-        <p>“My son uses HoopTutor for at-home workouts. The site is easy to use and the progress is amazing. Thank you for making basketball fun!”</p>
-        <span class="review-rating">★★★★★</span>
-      </div>
+  <img class="hero__bg" src="{{ url_for('static', filename='images/hero-basketball-court.jpg') }}" alt="Basketball court under stadium lights" />
+  <div class="hero__content">
+    <span class="hero__eyebrow">Basketball Training Resources Library</span>
+    <h1 class="hero__title">HoopTutor helps every player train with purpose.</h1>
+    <p class="hero__subtitle">Discover curated drills, structured workouts, and actionable coaching cues for shooting, ball-handling, defense, and fitness &mdash; all in one place.</p>
+    <a class="hero__cta" href="/shooting.html">Explore Drills</a>
+    <div class="hero__stats">
+      <div><strong>40+</strong> detailed drill breakdowns</div>
+      <div><strong>Smart filters</strong> by focus, skill, equipment</div>
+      <div><strong>Offline-ready</strong> favourite library</div>
     </div>
   </div>
 </section>
-<style>
-.reviews-section {
-  background: #F6F6F6;
-  border-radius: 18px;
-  box-shadow: 0 2px 12px rgba(39,68,114,0.08);
-  margin: 3rem auto 2rem auto;
-  max-width: 900px;
-  padding: 2.5rem 2rem;
-}
-.reviews-heading {
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #274472;
-  margin-bottom: 2rem;
-}
-.reviews-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-.review-card {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(39,68,114,0.07);
-  padding: 1.5rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
-  transition: box-shadow 0.2s;
-}
-.review-card:hover {
-  box-shadow: 0 6px 24px rgba(39,68,114,0.12);
-}
-.review-avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  object-fit: cover;
-  background: #eaeaea;
-}
-.review-content h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
-  color: #274472;
-  font-weight: 600;
-}
-.review-content p {
-  font-size: 1rem;
-  color: #274472;
-  margin-bottom: 0.5rem;
-}
-.review-rating {
-  color: #FFD700;
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-.signup-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  background: #A3CEF1;
-  color: #274472;
-  font-weight: 700;
-  font-size: 1.2rem;
-  padding: 0.8rem 2.2rem;
-  border-radius: 12px;
-  text-decoration: none;
-  box-shadow: 0 2px 8px rgba(39,68,114,0.10);
-  transition: background 0.2s, color 0.2s;
-}
-.signup-btn:hover {
-  background: #274472;
-  color: #fff;
-}
-@media (max-width: 900px) {
-  .reviews-cards { grid-template-columns: 1fr; gap: 1rem; }
-  .reviews-section { padding: 1.2rem 0.7rem; }
-}
-</style>
-{% endblock %}
 
+<section>
+  <h2 class="section-heading">Train the way you play</h2>
+  <p class="tagline">Jump straight into the skill you want to sharpen. Each pathway pairs pro-level insights with easy-to-follow instructions.</p>
+  <div class="category-tiles">
+    <a class="category-tile" href="/shooting.html">
+      <img src="{{ url_for('static', filename='images/shooting-drill.jpg') }}" alt="Player refining jump-shot form" />
+      <span class="category-tile__name">Shooting</span>
+      <span class="category-tile__desc">Foundation form through advanced shot creation with reps you can track.</span>
+    </a>
+    <a class="category-tile" href="/ball-handling.html">
+      <img src="{{ url_for('static', filename='images/ball-handling-drill.jpg') }}" alt="Athlete dribbling through cones" />
+      <span class="category-tile__name">Ball-handling</span>
+      <span class="category-tile__desc">Develop poise under pressure with progressive control, speed, and game moves.</span>
+    </a>
+    <a class="category-tile" href="/defense.html">
+      <img src="{{ url_for('static', filename='images/defense-drill.jpg') }}" alt="Defender sliding laterally" />
+      <span class="category-tile__name">Defense</span>
+      <span class="category-tile__desc">Sharpen footwork, reaction drills, and team concepts that win stops.</span>
+    </a>
+    <a class="category-tile" href="/fitness.html">
+      <img src="{{ url_for('static', filename='images/fitness-drill.jpg') }}" alt="Player completing conditioning circuit" />
+      <span class="category-tile__name">Fitness</span>
+      <span class="category-tile__desc">Basketball-ready strength, conditioning, mobility, and recovery sessions.</span>
+    </a>
+  </div>
+</section>
+
+<section class="reviews-section">
+  <h2 class="section-heading">From the HoopTutor community</h2>
+  <div class="reviews-grid">
+    <article class="review-card">
+      <img src="{{ url_for('static', filename='images/avatar1.png') }}" alt="Coach Lisa smiling" />
+      <div>
+        <h3>Coach Lisa</h3>
+        <p>“Our shooting percentages climbed after working through the form progressions. Athletes love the clarity and the ability to favourite drills for home sessions.”</p>
+        <span class="review-card__rating">★★★★★</span>
+      </div>
+    </article>
+    <article class="review-card">
+      <img src="{{ url_for('static', filename='images/jordan_varsity_guard.jpg') }}" alt="Jordan driving to the basket" />
+      <div>
+        <h3>Jordan (Varsity Guard)</h3>
+        <p>“Filters are a game changer. I can quickly find advanced dribbling drills and keep them saved offline before road trips.”</p>
+        <span class="review-card__rating">★★★★★</span>
+      </div>
+    </article>
+    <article class="review-card">
+      <img src="{{ url_for('static', filename='images/user.jpg') }}" alt="Parent Michelle smiling" />
+      <div>
+        <h3>Michelle (Parent)</h3>
+        <p>“The workout cards are so clear. My son follows them independently and the favourites page keeps him accountable.”</p>
+        <span class="review-card__rating">★★★★★</span>
+      </div>
+    </article>
+  </div>
+</section>
+{% endblock %}

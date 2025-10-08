@@ -1,79 +1,41 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="category-page">
-  <h1>Fitness</h1>
-  <p>Access fitness routines and tips to enhance your basketball performance.</p>
-</div>
+<section class="hero" data-category-hero="fitness">
+  <img class="hero__bg" data-category-hero-image src="{{ url_for('static', filename='images/fitness-drill.jpg') }}" alt="Player completing conditioning workout" />
+  <div class="hero__content">
+    <span class="hero__eyebrow" data-category-eyebrow>Fitness Pathway</span>
+    <h1 class="hero__title" data-category-title>Fuel Your Game</h1>
+    <p class="hero__subtitle" data-category-description>Strength, conditioning, and recovery blocks that keep you faster, stronger, and healthy through the season.</p>
+    <div class="hero__stats" data-category-focus-list></div>
+  </div>
+</section>
 
-<div class="drill-card" data-drill-id="fitness-drill-1">
-  <h2>Drill Title 1</h2>
-  <p>Details about drill 1.</p>
-  <button class="fav-btn" onclick="toggleFavorite('fitness-drill-1', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
-</div>
+<section class="filter-panel" data-drill-page="fitness">
+  <h2 class="section-heading">Build the perfect session</h2>
+  <p class="tagline">Search for workouts, filters by focus or equipment, then pin your favourites before heading to the gym.</p>
+  <div class="filter-panel__grid">
+    <label>Search keyword
+      <input type="search" data-filter="keyword" placeholder="e.g. strength, ladder, recovery" />
+    </label>
+    <label>Skill level
+      <select data-filter="skill">
+        <option value="">All levels</option>
+      </select>
+    </label>
+    <label>Focus area
+      <select data-filter="focus">
+        <option value="">All focuses</option>
+      </select>
+    </label>
+  </div>
+  <div class="filter-panel__actions">
+    <button class="btn btn--ghost" data-action="clear">Clear</button>
+    <button class="btn btn--primary" data-action="apply">Apply filters</button>
+  </div>
+</section>
 
-<div class="drill-card" data-drill-id="fitness-drill-2">
-  <h2>Drill Title 2</h2>
-  <p>Details about drill 2.</p>
-  <button class="fav-btn" onclick="toggleFavorite('fitness-drill-2', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
-</div>
-
-<div class="drill-card" data-drill-id="fitness-drill-3">
-  <h2>Drill Title 3</h2>
-  <p>Details about drill 3.</p>
-  <button class="fav-btn" onclick="toggleFavorite('fitness-drill-3', this)"><span class="fav-icon">&#9734;</span> Favourite</button>
-</div>
-
-<script>
-function getFavorites() {
-  return JSON.parse(localStorage.getItem('favorites') || '[]');
-}
-function setFavorites(favs) {
-  localStorage.setItem('favorites', JSON.stringify(favs));
-}
-function toggleFavorite(id, btn) {
-  let favs = getFavorites();
-  const isFav = favs.includes(id);
-  if (isFav) {
-    favs = favs.filter(f => f !== id);
-    btn.innerHTML = '<span class="fav-icon">&#9734;</span> Favourite';
-  } else {
-    favs.push(id);
-    btn.innerHTML = '<span class="fav-icon">&#9733;</span> Unfavourite';
-  }
-  setFavorites(favs);
-  updateAllButtons();
-}
-function updateAllButtons() {
-  const favs = getFavorites();
-  document.querySelectorAll('.drill-card').forEach(card => {
-    const id = card.getAttribute('data-drill-id');
-    const btn = card.querySelector('.fav-btn');
-    if (!btn) return;
-    if (favs.includes(id)) {
-      btn.innerHTML = '<span class="fav-icon">&#9733;</span> Unfavourite';
-    } else {
-      btn.innerHTML = '<span class="fav-icon">&#9734;</span> Favourite';
-    }
-  });
-}
-document.addEventListener('DOMContentLoaded', updateAllButtons);
-</script>
-
-<style>
-  .fav-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2em;
-    padding: 0;
-  }
-
-  .fav-icon {
-    color: gold;
-  }
-
-  .favorited .fav-icon {
-    color: red;
-  }
-</style>
+<section>
+  <div class="resource-grid" data-resource-grid></div>
+  <div class="empty-state" data-empty-state hidden>No workouts match your filters yet. Try broadening your search.</div>
+</section>
 {% endblock %}

@@ -1,242 +1,44 @@
 {% extends 'layout.html' %}
 {% block content %}
-<section class="library-hero">
-  <h1>Your Favorite Drills Library</h1>
-  <p>All drills you've marked as favorite appear here. Unfavourite to remove from your library.</p>
-</section>
-<section class="favorites-section">
-  <div class="drill-cards" id="library-drill-cards">
-    <!-- Drill cards will be loaded here by JS -->
+<section class="hero" data-library-hero>
+  <img class="hero__bg" src="{{ url_for('static', filename='images/hero-basketball-court.jpg') }}" alt="Notes and basketball on court floor" />
+  <div class="hero__content">
+    <span class="hero__eyebrow">Saved drills</span>
+    <h1 class="hero__title">Your HoopTutor Library</h1>
+    <p class="hero__subtitle">Everything you have starred is stored locally for quick offline access. Update filters to create micro sessions on the fly.</p>
   </div>
 </section>
-<script>
-const DRILL_DATA = {
-  'wall-shooting': {
-    title: 'Wall Shooting Drill',
-    img: 'static/images/wall-shooting.jpg',
-    desc: 'Isolate your shooting form by shooting close to a wall. Great for building muscle memory and consistency.',
-    skill: 'Beginner',
-    focus: 'Form',
-    instructions: ['Stand about 1–2 feet away from a flat wall.', 'Hold the ball in your shooting position (dominant hand under, guide hand on the side).', 'Shoot the ball softly against the wall, aiming for a consistent release point.', 'Focus on wrist snap, elbow alignment, and follow-through.', 'Avoid hitting the wall too hard — the goal is control, not power.'],
-    reps: ['3 sets of 20 reps', 'Rest 30 seconds between sets', 'Focus on making each shot identical'],
-    cue: 'Perfect form in motion – balance, elbow, follow-through.'
-  },
-  'one-hand-shooting': {
-    title: '1-Hand Shooting Drill',
-    img: 'static/images/one-hand-shooting.jpg',
-    desc: 'Practice with your shooting hand only to refine wrist action and follow-through.',
-    skill: 'Beginner',
-    focus: 'Form',
-    instructions: ['Shoot with your dominant hand only.', 'Focus on wrist action and follow-through.'],
-    reps: ['3 sets of 15 reps'],
-    cue: 'Refine wrist action and follow-through.'
-  },
-  'elbow-shooting': {
-    title: 'Elbow Shooting Drill',
-    img: 'static/images/elbow-shooting.jpg',
-    desc: 'Repetitive shots from the elbow to reinforce mid-range accuracy.',
-    skill: 'Intermediate',
-    focus: 'Form',
-    instructions: ['Shoot from the elbow repeatedly.', 'Focus on accuracy and consistency.'],
-    reps: ['3 sets of 20 reps'],
-    cue: 'Reinforce mid-range accuracy.'
-  },
-  'catch-shoot': {
-    title: 'Pass, Catch & Shoot Drill',
-    img: 'static/images/catch-shoot.jpg',
-    desc: 'Partner passes ball; shooter catches and fires immediately.',
-    skill: 'Intermediate',
-    focus: 'Catch & Shoot',
-    instructions: ['Partner passes ball.', 'Shooter catches and shoots immediately.'],
-    reps: ['3 sets of 10 reps'],
-    cue: 'Quick release after catch.'
-  },
-  'step-back': {
-    title: 'Step-Back Shooting Drill',
-    img: 'static/images/step-back.jpg',
-    desc: 'Create space with a step-back and shoot.',
-    skill: 'Advanced',
-    focus: 'Off Dribble',
-    instructions: ['Dribble, step back, and shoot.'],
-    reps: ['3 sets of 10 reps'],
-    cue: 'Create space and shoot.'
-  },
-  'figure-8-dribble': {
-    title: 'Figure 8 Dribble',
-    img: 'static/images/figure-8-dribble.jpg',
-    desc: 'Building rhythm and control with the figure 8.',
-    skill: 'Beginner',
-    focus: 'Control & Coordination',
-    instructions: ['Stand with feet shoulder-width apart, knees bent.', 'Dribble the ball in a figure 8 pattern around and between your legs.', 'Keep the ball low and controlled, using fingertips.', 'Perform with dominant hand, then switch to non-dominant.'],
-    reps: ['3 sets of 30 seconds per hand', 'Rest 30 seconds between sets'],
-    cue: 'Stay low, stay loose.'
-  },
-  'cone-crossover-drill': {
-    title: 'Cone Crossover Drill',
-    img: 'static/images/cone-crossover.jpg',
-    desc: 'Dribble toward each cone and perform a crossover move to switch hands. Simulates defender pressure.',
-    skill: 'Intermediate',
-    focus: 'Change of Direction',
-    instructions: ['Dribble toward each cone.', 'Perform a crossover move to switch hands.'],
-    reps: ['3 sets of 20 reps'],
-    cue: 'Simulates defender pressure.'
-  },
-  'spider-dribble': {
-    title: 'Spider Dribble',
-    img: 'static/images/spider-dribble.jpg',
-    desc: 'Dribble rapidly in front and behind you using alternating hands. Builds rapid hand coordination.',
-    skill: 'Intermediate',
-    focus: 'Hand Speed & Ambidexterity',
-    instructions: ['Dribble rapidly in front and behind you using alternating hands.'],
-    reps: ['3 sets of 30 seconds'],
-    cue: 'Builds rapid hand coordination.'
-  },
-  'two-ball-dribble': {
-    title: 'Stationary Two-Ball Dribble',
-    img: 'static/images/two-ball-dribble.jpg',
-    desc: 'Dribble both balls simultaneously at medium height. Builds symmetrical control and focus.',
-    skill: 'Advanced',
-    focus: 'Ambidexterity & Focus',
-    instructions: ['Dribble both balls simultaneously at medium height.'],
-    reps: ['3 sets of 30 seconds'],
-    cue: 'Builds symmetrical control and focus.'
-  },
-  'z-pattern-dribble': {
-    title: 'Z-Pattern Speed Dribble',
-    img: 'static/images/z-pattern-dribble.jpg',
-    desc: 'Sprint while dribbling, changing direction at each cone. Simulates game-like directional shifts.',
-    skill: 'Advanced',
-    focus: 'Speed & Directional Control',
-    instructions: ['Sprint while dribbling, changing direction at each cone.'],
-    reps: ['3 sets of 20 seconds'],
-    cue: 'Simulates game-like directional shifts.'
-  },
-  'fitness-drill-1': {
-    title: 'Drill Title 1',
-    img: '',
-    desc: 'Details about drill 1.',
-    skill: '',
-    focus: '',
-    instructions: [],
-    reps: [],
-    cue: ''
-  },
-  'fitness-drill-2': {
-    title: 'Drill Title 2',
-    img: '',
-    desc: 'Details about drill 2.',
-    skill: '',
-    focus: '',
-    instructions: [],
-    reps: [],
-    cue: ''
-  },
-  'fitness-drill-3': {
-    title: 'Drill Title 3',
-    img: '',
-    desc: 'Details about drill 3.',
-    skill: '',
-    focus: '',
-    instructions: [],
-    reps: [],
-    cue: ''
-  },
-  'zig-zag-defensive-slides': {
-    title: 'Zig-Zag Defensive Slides',
-    img: 'static/images/defense-drill.jpg',
-    desc: 'Mastering lateral movement with zig-zag slides.',
-    skill: 'Beginner',
-    focus: 'Lateral Movement & Stance',
-    instructions: ['Start on the baseline in a low defensive stance — knees bent, back straight, hands active.', 'Slide diagonally to the first cone or marker.', 'Change direction and slide to the next cone in a zig-zag pattern up the court.', 'Keep feet wide, avoid crossing legs, and stay low throughout.'],
-    reps: ['3 sets of full-court zig-zag slides', 'Rest 60 seconds between sets'],
-    cue: 'Chest up, feet wide, hands alive.'
-  },
-  'closeout-drill': {
-    title: 'Closeout Drill',
-    img: 'static/images/closeout-drill.jpg',
-    desc: 'Player sprinting toward a shooter with high hand extended.',
-    skill: 'Intermediate',
-    focus: '',
-    instructions: [],
-    reps: [],
-    cue: ''
-  },
-  'shell-drill': {
-    title: 'Shell Drill',
-    img: 'static/images/shell-drill.jpg',
-    desc: '',
-    skill: '',
-    focus: '',
-    instructions: [],
-    reps: [],
-    cue: ''
-  }
-};
-function getFavorites() {
-  return JSON.parse(localStorage.getItem('favorites') || '[]');
-}
-function setFavorites(favs) {
-  localStorage.setItem('favorites', JSON.stringify(favs));
-}
-function toggleFavorite(id, btn) {
-  let favs = getFavorites();
-  const isFav = favs.includes(id);
-  if (isFav) {
-    favs = favs.filter(f => f !== id);
-  } else {
-    favs.push(id);
-  }
-  setFavorites(favs);
-  renderLibrary();
-}
-function renderLibrary() {
-  const favs = getFavorites();
-  const container = document.getElementById('library-drill-cards');
-  container.innerHTML = '';
-  if (favs.length === 0) {
-    container.innerHTML = '<p style="text-align:center;color:#274472;font-size:1.1rem;">Add your favourite drills and they will show up here.</p>';
-    return;
-  }
-  favs.forEach(id => {
-    const drill = DRILL_DATA[id];
-    if (drill) {
-      const card = document.createElement('div');
-      card.className = 'drill-card';
-      card.setAttribute('data-drill-id', id);
-      card.innerHTML = `
-        <img class="drill-img" src="${drill.img}" alt="${drill.title}" />
-        <h3>${drill.title}</h3>
-        <span class="skill-tag">${drill.skill}</span>
-        <span class="focus-tag">${drill.focus}</span>
-        <h4>Instructions:</h4>
-        <ul>${drill.instructions.map(i => `<li>${i}</li>`).join('')}</ul>
-        <h4>Reps & Sets:</h4>
-        <ul>${drill.reps.map(r => `<li>${r}</li>`).join('')}</ul>
-        <h4>Coaching Cue:</h4>
-        <p><b>"${drill.cue}"</b></p>
-        <span class="caption">${drill.desc}</span>
-        <button class="fav-btn" onclick="toggleFavorite('${id}', this)"><span class="fav-icon">&#9733;</span> Unfavourite</button>
-      `;
-      container.appendChild(card);
-    }
-  });
-}
-document.addEventListener('DOMContentLoaded', renderLibrary);
-</script>
-<style>
-.library-hero { text-align: center; margin: 2rem 0 1.5rem 0; }
-.library-hero h1 { font-size: 2rem; color: #274472; font-weight: 700; }
-.library-hero p { font-size: 1.1rem; color: #274472; margin-top: 0.5rem; }
-.favorites-section { background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(39,68,114,0.10); margin: 2rem auto; max-width: 900px; padding: 2rem 2.5rem; }
-.drill-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-.drill-card { background: #F6F6F6; border-radius: 16px; box-shadow: 0 2px 12px rgba(39,68,114,0.08); padding: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; transition: transform 0.2s, box-shadow 0.2s; }
-.drill-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 6px 24px rgba(39,68,114,0.12); }
-.drill-img { width: 100%; max-width: 180px; border-radius: 12px; margin-bottom: 1rem; object-fit: cover; background: #eaeaea; }
-.skill-tag, .focus-tag { background: #A3CEF1; color: #274472; border-radius: 6px; padding: 0.2rem 0.7rem; font-size: 0.95rem; font-weight: 600; margin-right: 0.5rem; margin-top: 0.5rem; }
-.caption { font-size: 0.95rem; color: #A3CEF1; margin-top: 0.5rem; }
-.fav-btn { margin-top: 1rem; background: #A3CEF1; color: #274472; border: none; border-radius: 8px; padding: 0.5rem 1.2rem; font-weight: 600; cursor: pointer; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-.fav-btn.faved { background: #FFD700; color: #274472; }
-.fav-icon { font-size: 1.2rem; margin-right: 0.5rem; }
-@media (max-width: 900px) { .drill-cards { grid-template-columns: 1fr; gap: 1rem; } .favorites-section { padding: 1.2rem 0.7rem; } }
-</style>
+
+<section class="filter-panel" data-library-filter-panel>
+  <h2 class="section-heading">Organise your favourites</h2>
+  <p class="tagline">Refine your saved list by category, skill level, or focus area. Favourites automatically sync across devices sharing this browser profile.</p>
+  <div class="filter-panel__grid">
+    <label>Category
+      <select data-filter="category">
+        <option value="">All categories</option>
+      </select>
+    </label>
+    <label>Skill level
+      <select data-filter="skill">
+        <option value="">All levels</option>
+      </select>
+    </label>
+    <label>Focus area
+      <select data-filter="focus">
+        <option value="">All focuses</option>
+      </select>
+    </label>
+    <label>Keyword
+      <input type="search" data-filter="keyword" placeholder="Search within favourites" />
+    </label>
+  </div>
+  <div class="filter-panel__actions">
+    <button class="btn btn--ghost" data-action="clear">Clear</button>
+  </div>
+</section>
+
+<section>
+  <div class="resource-grid" data-library-grid></div>
+  <div class="empty-state" data-empty-state hidden>You have not saved any drills yet. Browse a category and tap the star icon to store drills here for offline access.</div>
+</section>
 {% endblock %}
