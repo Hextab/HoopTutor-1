@@ -10,13 +10,13 @@
       <a class="main-menu__link {% if active_page == 'ball-handling' %}main-menu__link--active{% endif %}" href="/ball-handling.html">Ball-handling</a>
       <a class="main-menu__link {% if active_page == 'defense' %}main-menu__link--active{% endif %}" href="/defense.html">Defense</a>
       <a class="main-menu__link {% if active_page == 'fitness' %}main-menu__link--active{% endif %}" href="/fitness.html">Fitness</a>
-      <a class="main-menu__link {% if active_page == 'library' %}main-menu__link--active{% endif %}" href="/library.html">Favorites</a>
+      <a class="main-menu__link {% if active_page == 'library' %}main-menu__link--active{% endif %}" href="/library.html">Favourites</a>
       <a class="main-menu__link {% if active_page == 'about' %}main-menu__link--active{% endif %}" href="/about.html">About</a>
     </div>
     <a class="main-menu__profile" id="menu-profile" href="/profile">
       <img id="menu-profile-avatar" src="{{ url_for('static', filename='images/user.jpg') }}" alt="Profile avatar" />
       <span id="menu-profile-name"></span>
-      <span class="favorites-count" id="menu-favorite-count">0</span>
+      <span class="favorites-count" id="menu-favorite-count" hidden>0</span>
     </a>
     <a class="main-menu__link" id="menu-auth-link" href="/login">Sign up</a>
   </div>

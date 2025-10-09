@@ -6,6 +6,8 @@ const FAVORITES_EVENT = 'hooptutor:favorites-changed';
 const PROFILE_EVENT = 'hooptutor:profile-changed';
 const DEFAULT_AVATAR = '/static/images/user.jpg';
 
+let favoritesSyncer = null;
+
 function duplicate(value) {
   if (value === null || value === undefined) return value;
   try {
@@ -42,10 +44,24 @@ export function getFavorites() {
   return loadJSON(FAVORITES_KEY, []);
 }
 
-export function setFavorites(ids) {
+export function registerFavoritesSyncer(syncer) {
+  favoritesSyncer = typeof syncer === 'function' ? syncer : null;
+}
+
+export function setFavorites(ids, options = {}) {
   const unique = Array.from(new Set((ids || []).filter(Boolean)));
   saveJSON(FAVORITES_KEY, unique);
   dispatch(FAVORITES_EVENT, { favorites: unique });
+  if (favoritesSyncer && options.sync !== false) {
+    try {
+      const result = favoritesSyncer(unique);
+      if (result && typeof result.then === 'function') {
+        result.catch((error) => console.warn('Unable to sync favourites with server', error));
+      }
+    } catch (err) {
+      console.warn('Unable to sync favourites with server', err);
+    }
+  }
   return unique;
 }
 
@@ -64,6 +80,10 @@ export function toggleFavorite(id) {
   return { favorites: list, active };
 }
 
+export function clearFavorites(options = {}) {
+  return setFavorites([], { ...options, sync: options.sync ?? false });
+}
+
 export function onFavoritesChange(callback) {
   const handler = (event) => callback(event.detail.favorites);
   window.addEventListener(FAVORITES_EVENT, handler);
@@ -76,6 +96,13 @@ export function getProfile() {
   if (profile && !profile.avatar) {
     profile.avatar = DEFAULT_AVATAR;
   }
+  if (profile && !profile.skillLevel) {
+    profile.skillLevel = 'Intermediate';
+  }
+  if (profile) {
+    profile.hasCustomAvatar = Boolean(profile.avatar && profile.avatar !== DEFAULT_AVATAR);
+    profile.authenticated = Boolean(profile.id);
+  }
   return profile;
 }
 
@@ -83,6 +110,13 @@ export function setProfile(profile) {
   const sanitised = profile && typeof profile === 'object' ? { ...profile } : {};
   if (sanitised && !sanitised.avatar) {
     sanitised.avatar = DEFAULT_AVATAR;
+  }
+  if (sanitised && !sanitised.skillLevel) {
+    sanitised.skillLevel = 'Intermediate';
+  }
+  if (sanitised) {
+    sanitised.hasCustomAvatar = Boolean(sanitised.avatar && sanitised.avatar !== DEFAULT_AVATAR);
+    sanitised.authenticated = Boolean(sanitised.id);
   }
   saveJSON(PROFILE_KEY, sanitised);
   dispatch(PROFILE_EVENT, { profile: sanitised });

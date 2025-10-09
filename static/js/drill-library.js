@@ -3,6 +3,10 @@ import { getFavorites, toggleFavorite, onFavoritesChange, cacheCatalog, getCache
 const DATA_URL = '/static/data/drills.json';
 let catalogPromise = null;
 
+function normaliseSkillLevel(value) {
+  return (value || '').trim().toLowerCase();
+}
+
 async function fetchCatalog() {
   if (catalogPromise) return catalogPromise;
   catalogPromise = (async () => {
@@ -368,6 +372,74 @@ export async function initLibraryPage() {
   window.addEventListener('online', render);
   window.addEventListener('offline', render);
   render();
+}
+
+export function selectDrillOfDay(catalog, skillLevel, referenceDate = new Date()) {
+  if (!catalog || !Array.isArray(catalog.drills) || !catalog.drills.length) {
+    return null;
+  }
+
+  const normalized = normaliseSkillLevel(skillLevel) || 'intermediate';
+  const priorities = [];
+
+  const pushPriority = (level) => {
+    if (!level) return;
+    const canonical = normaliseSkillLevel(level);
+    if (!priorities.includes(canonical)) {
+      priorities.push(canonical);
+    }
+  };
+
+  pushPriority(normalized);
+  if (normalized !== 'all levels') {
+    pushPriority('all levels');
+  }
+  pushPriority('intermediate');
+  pushPriority('beginner');
+  pushPriority('advanced');
+
+  const candidateMap = new Map();
+  priorities.forEach((level) => {
+    catalog.drills
+      .filter((drill) => normaliseSkillLevel(drill.skillLevel) === level)
+      .forEach((drill) => {
+        if (!candidateMap.has(drill.id)) {
+          candidateMap.set(drill.id, drill);
+        }
+      });
+  });
+
+  if (!candidateMap.size) {
+    catalog.drills.forEach((drill) => {
+      if (!candidateMap.has(drill.id)) {
+        candidateMap.set(drill.id, drill);
+      }
+    });
+  }
+
+  const candidates = Array.from(candidateMap.values());
+  let dateKey;
+  if (typeof referenceDate === 'string') {
+    dateKey = referenceDate;
+  } else {
+    const date = referenceDate instanceof Date ? referenceDate : new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    dateKey = `${year}-${month}-${day}`;
+  }
+  const hashSource = `${dateKey}:${normalized}`;
+  let hash = 0;
+  for (let index = 0; index < hashSource.length; index += 1) {
+    hash = (hash << 5) - hash + hashSource.charCodeAt(index);
+    hash |= 0;
+  }
+  const selectedIndex = Math.abs(hash) % candidates.length;
+  const drill = candidates[selectedIndex];
+  const category = Array.isArray(catalog.categories)
+    ? catalog.categories.find((item) => item.id === drill.categoryId) || null
+    : null;
+  return { drill, category };
 }
 
 export { fetchCatalog };
