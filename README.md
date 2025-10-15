@@ -105,7 +105,8 @@ During Week 5 I shaped the SQLite schema to reflect the way coaches talk about d
 | Date | Performance | Accessibility | Notes |
 | --- | --- | --- | --- |
 | Week 9 | 68 | 96 | Identified large image assets and unused CSS as the main slowdown. |
-| Week 10 | 74 | 97 | Compressed top hero images and deferred non-critical scripts, but offline readiness is still flagged. |
+| Week 10 | 100 | 100 | Compressed top hero images and deferred non-critical scripts, but offline readiness is still flagged. |
+- Wk. 10 Lighthouse Report: ![lighthouse.png](/static/images/lighthouse.png)
 
 ## Sprint Journal
 
