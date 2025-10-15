@@ -939,6 +939,34 @@ button {
   max-width: 680px;
 }
 
+.microcopy-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translate(-50%, 24px);
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  background: var(--color-navy);
+  color: var(--color-cloud);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-hover);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1200;
+  transition: opacity 0.24s ease, transform 0.24s ease;
+}
+
+.microcopy-toast[data-visible="true"] {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.microcopy-toast--auth {
+  background: rgba(39, 68, 114, 0.94);
+}
+
 .offline-banner {
   background: linear-gradient(135deg, rgba(201, 76, 76, 0.85), rgba(201, 76, 76, 0.6));
   color: var(--color-cloud);

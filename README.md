@@ -55,8 +55,6 @@ I experimented with two visual approaches to compare mood, navigation, and infor
 ### Wireframes and Figma References
 - Initial concept sketch: ![Initial Wireframe](HoopTutorImages/InitialWireframe.png)
 - Alternative flow in Figma: ![HoopTutor Alternative Design](HoopTutorImages/HoopTutorAlternativeDesign.png)
-- Sign-up Button in menu bar: ![Sign-up Button in menu bar](static/images/Sign-up.png)
-- Microcopy: ![Microcopy](static/images/Microcopy.png)
 
 ## Algorithm and Test Preparation
 Week 4 focused on translating user flow into clear processing steps. I mapped the favourites feature because it touches both the interface and local storage.
@@ -114,6 +112,8 @@ I spent the opening week unpacking the problem space with my client Kai Chen and
 ### Week 2 - UI Hierarchy and Interactive Elements
 This week revolved around sketching the core pages and annotating why interface elements sit where they do. Writing notes directly onto the sketches made the review far more conversational. The first navigation pass buried the favourites shortcut, so I pulled it into the header to respect the feature’s importance. I am still deciding whether the hero should rotate highlights or stay static. Kai liked the punchy category tiles and reminded me to make login impossible to miss from the landing page.
 
+- Sign-up Button in menu bar: ![Sign-up](static/images/Sign-up.png)
+
 ### Week 3 - Alternative Design Exploration
 I produced a contrasting Figma concept to challenge the default design assumptions. The vertical navigation surprised me by feeling faster on tablets, although the aggressive red palette felt off-brand for younger players. Work remains to document the data hand-offs between pages in a way the client can follow. He valued seeing a bold alternative and ultimately steered me back toward the calmer blue identity while keeping some of the alternate layout ideas.
 
@@ -126,11 +126,14 @@ This week focussed on the SQLite schema and pressure-testing it with realistic q
 ### Week 6 - Page Assembly in HTML
 I shifted back to the front end, wiring the first three pages with shared templates to avoid duplicated layout code. Early CSS caused columns to collapse awkwardly on smaller screens, which I fixed by tightening the breakpoints and simplifying the grid. During the walkthrough Kai navigated smoothly and stressed that buttons should always communicate what happens next, so I added a microcopy to reinforce each action.
 
+- Microcopy: ![Microcopy](static/images/Microcopy.png)
+
 ### Week 7 - CSS Styling and Consistency
 I now priortisied styling as I rolled out the design system across components and introduced spacing utilities to keep rhythm consistent. The navigation bar lacked contrast until I deepened the primary colour and tweaked text weight. Kai enjoyed how cohesive the site now feels and asked for more varied imagery so players can visualise different training scenarios, which I will source in parallel with content updates.
 
 ### Week 8 - Forms and Login Experience
 Form design dominated week eight. Floating labels proved a smart choice, keeping the login and signup forms compact without sacrificing clarity. My original error copy read too much like a system log, so I rewrote it with friendlier language and clearer remediation steps. The signup path continues to store data locally until the back end is ready, so I’m careful to set expectations with testers. Kai liked the supportive tone of the messages and floated the idea of adding a password toggle, which is now pencilled into the backlog.
+
 
 ### Week 9 - Interactivity and Progressive Features
 The project crossed into richer interactivity as I scaffolded the service worker, manifest, and favourites persistence logic. Watching drills survive page reloads confirmed that the earlier algorithm work paid off. The cache strategy still needs refinement so every critical asset is available offline, and background sync for favourites remains on the to-do list. Running the first Lighthouse report exposed weaknesses in the webapp and guided performance tweaks. Kai was excited by the prospect of an installable app and pushed for offline drills to be ready for gym sessions.

@@ -1,7 +1,49 @@
-import { getFavorites, toggleFavorite, onFavoritesChange, cacheCatalog, getCachedCatalog } from './state.js';
+import {
+  getFavorites,
+  toggleFavorite,
+  onFavoritesChange,
+  cacheCatalog,
+  getCachedCatalog,
+  getProfile,
+} from './state.js';
 
 const DATA_URL = '/static/data/drills.json';
 let catalogPromise = null;
+const SIGN_IN_MESSAGE_ID = 'favorite-signin-microcopy';
+const SIGN_IN_MESSAGE_TEXT = 'sign-in to favourite drills';
+let signInRedirectTimer = null;
+
+function isUserAuthenticated() {
+  const profile = getProfile();
+  return Boolean(profile?.authenticated && profile.id);
+}
+
+function promptSignIn() {
+  let microcopy = document.getElementById(SIGN_IN_MESSAGE_ID);
+  if (!microcopy) {
+    microcopy = document.createElement('div');
+    microcopy.id = SIGN_IN_MESSAGE_ID;
+    microcopy.className = 'microcopy-toast microcopy-toast--auth';
+    microcopy.setAttribute('role', 'status');
+    microcopy.dataset.visible = 'false';
+    document.body.appendChild(microcopy);
+  }
+
+  microcopy.textContent = SIGN_IN_MESSAGE_TEXT;
+
+  requestAnimationFrame(() => {
+    microcopy.dataset.visible = 'true';
+  });
+
+  if (signInRedirectTimer) {
+    clearTimeout(signInRedirectTimer);
+  }
+
+  signInRedirectTimer = window.setTimeout(() => {
+    microcopy.dataset.visible = 'false';
+    window.location.assign('/login');
+  }, 1600);
+}
 
 function normaliseSkillLevel(value) {
   return (value || '').trim().toLowerCase();
@@ -231,6 +273,10 @@ function setupFavoriteListeners(container) {
     if (!button) return;
     const drillId = button.dataset.drillId;
     if (!drillId) return;
+    if (!isUserAuthenticated()) {
+      promptSignIn();
+      return;
+    }
     const { active } = toggleFavorite(drillId);
     formatFavoriteButton(button, active);
   };
