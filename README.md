@@ -1,4 +1,8 @@
 # HoopTutor – Basketball Training Resources Library
+## Instructions For The User
+1. Download file 
+2. Import into Visual Studio Code
+3. Run flask in the terminal and enter 'python main.py' for windows OS or 'python3 main.py' for mac OS
 
 ## Product Purpose
 HoopTutor is the basketball training companion I am building to help high school players and coaches organise skill sessions faster. The app curates drills, workout plans, and teaching points into categories so a user can move from idea to practice plan quickly. The long term goal is to let a user personalise a training timeline and stay motivated through clear progress tracking.
@@ -151,3 +155,6 @@ Immediate priorities:
 - Continue compressing media and deferring non-critical scripts to raise Lighthouse performance.
 
 Once these items are resolved, HoopTutor will be ready for the first formal user testing round in Week 1 next term, setting the stage for iteration based on real player feedback.
+
+## References
+- Github Copilot (For understanding and making adjustments to code)

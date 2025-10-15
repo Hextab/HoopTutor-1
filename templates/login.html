@@ -1,79 +1,50 @@
 {% extends 'layout.html' %}
 {% block content %}
 <section class="auth-card" data-page="login">
-  <h1>Join or log in to HoopTutor</h1>
-  <div class="auth-card__switcher">
-    <button class="auth-card__tab is-active" type="button" data-auth-switch="signup">Sign up</button>
-    <button class="auth-card__tab" type="button" data-auth-switch="signin">Log in</button>
-  </div>
-  <form id="signup-form" data-auth-panel="signup" autocomplete="on">
-    <div class="form-grid">
-      <div class="form-field">
-        <label for="signup-name">Full name</label>
-        <input id="signup-name" name="name" type="text" autocomplete="name" required />
-      </div>
-      <div class="form-field">
-        <label for="signup-email">Email</label>
-        <input id="signup-email" name="email" type="email" autocomplete="email" required />
-      </div>
-      <div class="form-field">
-        <label for="signup-password">Password</label>
-        <input id="signup-password" name="password" type="password" minlength="6" autocomplete="new-password" required />
-      </div>
-      <div class="form-field">
-        <label for="signup-dob">Date of birth</label>
-        <input id="signup-dob" name="dob" type="date" required />
-      </div>
-      <div class="form-field">
-        <label for="signup-gender">Gender</label>
-        <select id="signup-gender" name="gender" required>
-          <option value="" disabled selected>Choose one</option>
-          <option value="Female">Female</option>
-          <option value="Male">Male</option>
-          <option value="Non-binary">Non-binary</option>
-          <option value="Prefer not to say">Prefer not to say</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label for="signup-skill">Current skill level</label>
-        <select id="signup-skill" name="skillLevel" required>
-          <option value="" disabled selected>Select your track</option>
-          <option value="Beginner">Beginner</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Advanced">Advanced</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label for="signup-position">Primary position</label>
-        <select id="signup-position" name="position" required>
-          <option value="" disabled selected>Select your role</option>
-          <option value="Point Guard">Point Guard</option>
-          <option value="Shooting Guard">Shooting Guard</option>
-          <option value="Small Forward">Small Forward</option>
-          <option value="Power Forward">Power Forward</option>
-          <option value="Center">Center</option>
-          <option value="All-rounder">All-rounder</option>
-        </select>
-      </div>
+  <h1>Create your HoopTutor profile</h1>
+  <form id="signup-form">
+    <div class="form-field">
+      <label for="signup-name">Full name</label>
+      <input id="signup-name" name="name" type="text" autocomplete="name" required />
+    </div>
+    <div class="form-field">
+      <label for="signup-email">Email</label>
+      <input id="signup-email" name="email" type="email" autocomplete="email" required />
+    </div>
+    <div class="form-field">
+      <label for="signup-password">Password</label>
+      <input id="signup-password" name="password" type="password" minlength="6" required />
+    </div>
+    <div class="form-field">
+      <label for="signup-dob">Date of birth</label>
+      <input id="signup-dob" name="dob" type="date" required />
+    </div>
+    <div class="form-field">
+      <label for="signup-gender">Gender</label>
+      <select id="signup-gender" name="gender" required>
+        <option value="" disabled selected>Choose one</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+        <option value="Non-binary">Non-binary</option>
+        <option value="Prefer not to say">Prefer not to say</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label for="signup-position">Primary position</label>
+      <select id="signup-position" name="position" required>
+        <option value="" disabled selected>Select your role</option>
+        <option value="Point Guard">Point Guard</option>
+        <option value="Shooting Guard">Shooting Guard</option>
+        <option value="Small Forward">Small Forward</option>
+        <option value="Power Forward">Power Forward</option>
+        <option value="Center">Center</option>
+        <option value="All-rounder">All-rounder</option>
+      </select>
     </div>
     <div class="form-actions">
       <button class="btn btn--primary" type="submit">Join HoopTutor</button>
     </div>
   </form>
-  <form id="signin-form" data-auth-panel="signin" hidden autocomplete="on">
-    <div class="form-field">
-      <label for="signin-email">Email</label>
-      <input id="signin-email" name="email" type="email" autocomplete="email" required />
-    </div>
-    <div class="form-field">
-      <label for="signin-password">Password</label>
-      <input id="signin-password" name="password" type="password" autocomplete="current-password" required />
-    </div>
-    <div class="form-actions">
-      <button class="btn btn--primary" type="submit">Log in</button>
-    </div>
-  </form>
-  <div class="auth-feedback" data-auth-feedback hidden></div>
-  <p class="tagline" data-auth-note data-note-signup="We store your details securely so coaches can customise training plans. You can update them any time." data-note-signin="Welcome back! We will sync your saved drills and profile details as soon as you log in.">We store your details securely so coaches can customise training plans. You can update them any time.</p>
+  <p class="tagline">We store your details securely so coaches can customise training plans. You can update them any time.</p>
 </section>
 {% endblock %}

@@ -1,80 +1,19 @@
 {% extends 'layout.html' %}
 {% block content %}
 <section class="profile-card" data-page="profile">
-  <h1>Manage your HoopTutor profile</h1>
-  <p class="tagline profile-card__intro">Update your details and keep your drill suggestions tuned to where you are on your journey.</p>
+  <h1>Your HoopTutor profile</h1>
   <div class="profile-card__body">
-    <div class="avatar-uploader">
-      <img class="profile-card__avatar" id="profile-avatar" src="{{ url_for('static', filename='images/user.jpg') }}" alt="Profile avatar" />
-      <div class="avatar-uploader__actions">
-        <label class="btn btn--ghost" for="profile-avatar-input">Upload photo</label>
-        <input id="profile-avatar-input" name="avatar" type="file" accept="image/*" hidden />
-        <button class="btn btn--ghost" type="button" data-action="remove-avatar">Remove photo</button>
-      </div>
-    </div>
+    <img class="profile-card__avatar" id="profile-avatar" src="{{ url_for('static', filename='images/user.jpg') }}" alt="Profile avatar" />
     <div class="profile-card__meta">
       <h2 id="profile-name">Player</h2>
-      <p id="profile-email">Tap "Sign up" to add your details.</p>
+      <p id="profile-email">Tap “Sign up” to add your details.</p>
     </div>
   </div>
-  <form class="profile-form" id="profile-form" autocomplete="on">
-    <div class="form-grid">
-      <div class="form-field">
-        <label for="profile-field-name">Full name</label>
-        <input id="profile-field-name" name="name" type="text" autocomplete="name" required />
-      </div>
-      <div class="form-field">
-        <label for="profile-field-email">Email</label>
-        <input id="profile-field-email" name="email" type="email" autocomplete="email" required />
-      </div>
-      <div class="form-field">
-        <label for="profile-field-password">Password</label>
-        <input id="profile-field-password" name="password" type="password" minlength="6" placeholder="Update password" autocomplete="new-password" />
-        <small class="form-hint">Leave blank to keep your current password.</small>
-      </div>
-      <div class="form-field">
-        <label for="profile-field-dob">Date of birth</label>
-        <input id="profile-field-dob" name="dob" type="date" />
-      </div>
-      <div class="form-field">
-        <label for="profile-field-gender">Gender</label>
-        <select id="profile-field-gender" name="gender">
-          <option value="">Choose one</option>
-          <option value="Female">Female</option>
-          <option value="Male">Male</option>
-          <option value="Non-binary">Non-binary</option>
-          <option value="Prefer not to say">Prefer not to say</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label for="profile-field-skill">Skill level</label>
-        <select id="profile-field-skill" name="skillLevel" required>
-          <option value="Beginner">Beginner</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Advanced">Advanced</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label for="profile-field-position">Primary position</label>
-        <select id="profile-field-position" name="position">
-          <option value="">Select your role</option>
-          <option value="Point Guard">Point Guard</option>
-          <option value="Shooting Guard">Shooting Guard</option>
-          <option value="Small Forward">Small Forward</option>
-          <option value="Power Forward">Power Forward</option>
-          <option value="Center">Center</option>
-          <option value="All-rounder">All-rounder</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-actions">
-      <button class="btn btn--primary" type="submit">Save profile changes</button>
-    </div>
-  </form>
-  <div class="profile-card__foot">
-    <div class="profile-feedback" data-profile-feedback role="status" aria-live="polite" hidden></div>
-    <button class="btn btn--ghost" type="button" data-action="clear-profile">Clear local profile</button>
-    <button class="btn btn--primary" type="button" data-action="logout">Log out</button>
-  </div>
+  <ul class="profile-details">
+    <li id="profile-dob">Birthday: —</li>
+    <li id="profile-gender">Gender: —</li>
+    <li id="profile-position">Position: —</li>
+  </ul>
+  <button class="btn btn--ghost" type="button" data-action="clear-profile">Clear saved profile</button>
 </section>
 {% endblock %}
