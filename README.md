@@ -1,201 +1,150 @@
 # HoopTutor – Basketball Training Resources Library
 
-**Project Description**
+## Product Purpose
+HoopTutor is the basketball training companion I am building to help high school players and coaches organise skill sessions faster. The app curates drills, workout plans, and teaching points into categories so a user can move from idea to practice plan quickly. The long term goal is to let a user personalise a training timeline and stay motivated through clear progress tracking.
 
-HoopTutor is a simple, interactive website designed to provide basketball players with a curated collection of training resources. The platform organizes drills, workout plans, and educational content into easy-to-navigate categories such as:
+Right now the prototype runs locally with a Flask back end and SQLite data store. The front end presents curated resources, early account management features, and the foundations for offline access through a progressive web app setup.
 
-- Shooting  
-- Ball-handling  
-- Defense  
-- Fitness
+## Current Build Snapshot
+- Players browse drills grouped by shooting, ball-handling, defense, and conditioning focus areas.
+- Filter and search options reduce the time it takes to surface an appropriate drill set.
+- Favourites are cached in local storage so a player keeps a personal playbook even if the connection drops.
+- A SQL-backed catalogue keeps resource data consistent across pages and will power future personalisation.
+- Initial service worker and manifest files are in place so the app can grow into a full PWA.
 
-The aim is to create an accessible hub where players of all levels can quickly find trusted drills and tips to improve their game.
+## Requirements and Scope
+I opened the project by mapping the functional and non-functional expectations with my client. That agreement keeps every weekly sprint anchored to what matters.
 
-**Key Features**
+### Functional requirements
+- Welcome page presents four core training categories and recommended drills.
+- Drill cards surface title, skill focus, difficulty, equipment needs, and media links.
+- Search and filtering narrows the catalogue by difficulty, position, or focus area.
+- Favourites allow a player to bookmark drills for later review using local storage.
+- Player profile captures basic biography data to shape later recommendations.
+- Admin workflow to seed and maintain drill data through structured forms.
 
-- Categorized library of videos, articles, and images  
-- Search and filter by skill level or focus area  
-- "Save to Favorites" feature  
-- Mobile-friendly design for on-the-go access  
+### Non-functional requirements
+- Loads quickly on school Wi-Fi thanks to compressed imagery and local caching.
+- Responsive layouts prioritise mobile first while scaling cleanly to desktop.
+- Interface follows consistent typography and contrast guidelines for accessibility.
+- Error handling tells the user what went wrong and how to recover.
+- Codebase is modular enough that future contributors can add drills or sports with minimal refactoring.
 
-## Current Build Highlights
-- Drill discovery mirrors a coach’s session planner with quick filters by skill focus, level, and equipment.
-- Saved favourites act like a personal playbook that stays available even if you lose connection at the stadium.
-- Responsive layouts keep instructions clear whether you’re courtside on a phone or planning from a laptop.
-- Player profiles capture key details (position, age, goals) so future sessions can be tailored with ease.
+## Design Documentation
+I experimented with two visual approaches to compare mood, navigation, and information density before committing to the production look and feel.
 
----
+### Visual Identity Choices (Primary Concept)
+| Element | Choice | Rationale |
+| --- | --- | --- |
+| Colour palette | Primary #274472, secondary #A3CEF1, neutral #F6F6F6 | Navy conveys trust, light blue keeps the tone instructional, and the light neutral lifts contrast. |
+| Typography | Headings: Montserrat 700, body: Open Sans 400 | Montserrat gives confident structure while Open Sans stays readable during long drill descriptions. |
+| Buttons | Rounded corners, filled primary colour on hover | Friendly to teen users and provides clear interaction feedback. |
+| Icons | Minimal outline SVG set | Keeps focus on content while providing fast visual anchors. |
+| Imagery | Action photography from practice sessions | Reinforces motivation and demonstrates correct technique. |
+| Forms | Floating labels with generous spacing | Reduces cognitive load on mobile sign-up and login. |
 
-**Functional Requirements**
+### Alternative Exploration
+| Element | Choice | Experiment Goal |
+| --- | --- | --- |
+| Colour palette | Black, white, and red accents | Test a bolder, high-contrast theme for elite training vibe. |
+| Navigation | Side rail with condensed icons | Investigate vertical navigation for faster thumb reach on tablets. |
+| Typography | Heavy condensed headings with light body text | Explore a sports-magazine feel and check readability limits. |
+| Layout | Hero drill carousel above data cards | Gauge whether a storytelling approach beats a catalog layout. |
+| CTA styling | Ghost buttons with thick borders | Validate whether contrast or filled buttons drive more taps. |
 
-*1. User Interface*
+### Wireframes and Figma References
+- Initial concept sketch: ![Initial Wireframe](HoopTutorImages/InitialWireframe.png)
+- Alternative flow in Figma: ![HoopTutor Alternative Design](HoopTutorImages/HoopTutorAlternativeDesign.png)
+- Sign-up Button in menu bar: ![Sign-up Button in menu bar](static/images/Sign-up.png)
+- Microcopy: ![Microcopy](static/images/Microcopy.png)
 
-- Homepage with clear category tiles: Shooting, Ball-handling, Defense, Fitness  
-- Resource cards showing titles, descriptions, and media  
-- Search and filter tools  
-- Favorites/bookmark system using browser storage
-
-*2. Content Management*
-
-- Resource database stored in a JSON file or simple CMS  
-- Easy to update, add, or remove resources
-
-*3. User Interaction*
-
-- Responsive design for mobile, tablet, and desktop  
-- Resource click opens detailed view with instructions/media  
-- Favorites persist locally
-
-*4. Deployment*
-
-- Deployed using GitHub Pages for public access
-
----
-
-**Non-Functional Requirements**
-
-*1. Performance*
-
-- Fast loading with optimized media  
-- Lightweight site architecture with minimal dependencies
-
-*2. Usability*
-
-- Intuitive layout with simple navigation  
-- Concise, helpful drill descriptions  
-- Designed with mobile-first principles
-
-*3. Reliability*
-
-- Local storage for session persistence  
-- Error handling for missing or broken media links
-
-*4. Maintainability*
-
-- Modular, readable code using HTML, CSS, JavaScript  
-- Simple structure allows non-technical updates
-
-*5. Scalability*
-
-- Future-ready: Easily expandable with more categories or community-submitted drills 
+## Algorithm and Test Preparation
+Week 4 focused on translating user flow into clear processing steps. I mapped the favourites feature because it touches both the interface and local storage.
 
 
 
----
-## Design Choices (Initial)
-| Element         | Choice                                                                 | Reason                                                                                  |
-|----------------|------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
-| **Colour Palette** | Primary: #274472 (Dark Blue), Secondary: #A3CEF1 (Light Blue), Accent: #F6F6F6 | Creates a modern, clean, and calming look that feels sporty yet educational            |
-| **Typography**     | Headings: 'Montserrat' (bold), Body: 'Open Sans' '                    | Montserrat adds structure and boldness, while Open Sans ensures effective readability            |
-| **Button Style**   | Rounded corners, filled primary colour on hover                      | Friendly and accessible; hover feedback adds interactivity                              |
-| **Icon Style**     | Flat SVG or minimal outline icons with consistent line weight        | Keeps UI consistent and clean; avoids visual clutter                                   |
-| **Imagery**        | Action-oriented photos (e.g. players training or mid-play shots)      | Adds energy and motivation; reflects target audience aspirations                        |
-| **Forms**          | Simple layout with floating labels and subtle shadows                | Clean look with high usability on both desktop and mobile                              |
+### Test Cases
+| Test Case ID | Scenario | Preconditions | Steps | Expected Result |
+| --- | --- | --- | --- | --- |
+| TC-FAV-01 | Save a new drill to favourites | User is logged in, drill not yet saved | 1. Open drill card 2. Select Save button | Drill id stored in local storage, toast confirmation appears, favourites badge increments. |
+| TC-FAV-02 | Remove an existing favourite | Drill already saved | 1. Go to favourites list 2. Click Remove | Drill id removed from storage, badge decrements, toast confirms removal. |
+| TC-FAV-03 | Prevent duplicate favourites | Drill already in list | 1. Attempt to save same drill again | System blocks duplicate, toast explains status, list unchanged. |
+| TC-FAV-04 | Guest user saves a drill | Not logged in | 1. Save drill | Local storage stores drill for anonymous session, prompt invites user to sign in for sync later. |
+
+## Data Model and SQL Work
+During Week 5 I shaped the SQLite schema to reflect the way coaches talk about drills. Each table keeps relationships tidy and future friendly.
+
+| Table | Purpose | Key Fields | Notes |
+| --- | --- | --- | --- |
+| users | Stores account and role data | id (PK), email, password_hash, role, created_at | Role field will gate coach vs player views. |
+| categories | Defines skill groupings | id (PK), name, description | Seeded with shooting, ball-handling, defense, fitness. |
+| drills | Core drill catalogue | id (PK), title, category_id (FK), difficulty, equipment, media_url, instructions | Difficulty stored as ENUM-like text for readability. |
+| favourites | Bridges users and drills | id (PK), user_id (FK), drill_id (FK), created_at | Supports personalised playbooks and analytics later. |
+| sessions | Planned practice sessions | id (PK), user_id (FK), session_date, notes | Placeholder for upcoming scheduling features. |
 
 
 
-## Initial Design
-![Initial Wireframe](HoopTutorImages/InitialWireframe.png)
 
-## Alternative Design
-![HoopTutorAlternativeDesign](HoopTutorImages/HoopTutorAlternativeDesign.png)
+## Frontend Implementation Highlights (Weeks 6-8)
+- Built three core pages: `index.html` for category discovery, `fitness.html` as a template for drill listings, and shared layouts in `layout.html` with the navigation partial.
+- Applied the blue palette, consistent spacing, and hover states to keep the UI approachable while highlighting calls to action.
+- Navigation enables movement between pages without disorientation, including a persistent menu partial for maintainability.
+- Login and signup forms follow the floating-label approach from earlier sketches, reinforcing the design system.
+- Client feedback praised the clarity of information but requested stronger alignment on small screens, which I resolved by tightening flexbox breakpoints.
 
-## Design Choices (Alternative)
+## Interactivity and Offline Work (Weeks 9-10)
+- Introduced service worker scaffolding, `manifest.json`, and `app.js` to prepare offline caching and install prompts.
+- Implemented local storage for favourites and started abstracting data access so the service worker can cache API responses next sprint.
+- Enhanced form validation with clearer error messages and success toasts, improving trust in the login workflow.
+- Ran existing test cases against the new interactions to confirm favourites logic works as intended.
+- Remaining work: expand the service worker cache list, complete sync logic after reconnection, and finish the signup-to-database pipeline.
 
-| Design Element          | Choice Made                                                                                   | Reasoning                                                                                      |
-|-------------------------|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| **Colour Scheme**       | I used the colours red, white, and black with minimal accents                                              | Red conveys energy and urgency, and black and white keeps it clean and professional |
-| **Typography**          | Bold sans-serif for headings, lighter sans-serif for body text                                | Improves readability and makes the headings stand out                                          |
-| **Navigation Bar**      | Top horizontal navigation with bold active link highlight (red underline on active page)      | Keeps navigation consistent and visible                                        |
-| **Hero Image**          | Full-width background image of basketball players in action                                   | Creates immediate visual engagement and sets a sporty tone                                     |
-| **Layout**              | Centralised hero text with call-to-action buttons below event listings                        | Guides the user’s eye from the main title to actionable items                                  |
-| **Event Listings**      | Clean list format with date, title, and location; “Buy Tickets” button in red                 | Simple structure allows quick scanning; red buttons draw attention to actions                  |
-| **Call-to-Action Buttons** | Bright red with white text                                                                  | High contrast for visibility; consistent with brand colour                                     |
-| **Icons/Social Media**  | Small, consistent icons in header for Facebook, Youtube, etc.                              | Provides easy access to community channels without cluttering the page                         |
-| **Spacing & Alignment** | Generous white space, consistent padding, and aligned text/button placements                  | Improves visual clarity                            |
+## Lighthouse Tracking
+| Date | Performance | Accessibility | Notes |
+| --- | --- | --- | --- |
+| Week 9 | 68 | 96 | Identified large image assets and unused CSS as the main slowdown. |
+| Week 10 | 74 | 97 | Compressed top hero images and deferred non-critical scripts, but offline readiness is still flagged. |
 
-## Login Function Algorithm
-![Algorithm](HoopTutorImages/Algorithm.png)
+## Sprint Journal
 
-# User Login Process Flowchart - Test Cases
 
-## Test Case 1 — Valid Login Credentials
-| Field | Details |
-|-------|---------|
-| **Test Case ID** | TC-LOGIN-001 |
-| **Test Case Name** | Successful login with correct email and password |
-| **Preconditions** | User has a valid account with email and password stored in the database; system is online and accessible |
-| **Test Steps** | 1. Navigate to login page<br>2. Enter registered email in correct format<br>3. Enter matching password<br>4. Click “Login” button |
-| **Expected Result** | User session is created, and user is redirected to dashboard |
-| **Actual Result** | *(To be filled after execution)* |
-| **Pass/Fail** | *(To be filled after execution)* |
-| **Priority** | High |
+### Week 1 - Project Definition and Requirements
+I spent the opening week unpacking the problem space with my client Kai Chen and translating that discussion into functional and non-functional requirements. Aligning early on what makes a web app different from a brochure site prevented later confusion. The scope initially ballooned toward analytics, so we agreed to defer that ambition until the core drill discovery experience is stable. I still owe the client a drafted privacy statement, and I remain conscious that letting scope creep back in could derail the database timeline. They appreciated the clear focus on the training catalogue and asked for regular checkpoints to keep us honest.
 
----
+### Week 2 - UI Hierarchy and Interactive Elements
+This week revolved around sketching the core pages and annotating why interface elements sit where they do. Writing notes directly onto the sketches made the review far more conversational. The first navigation pass buried the favourites shortcut, so I pulled it into the header to respect the feature’s importance. I am still deciding whether the hero should rotate highlights or stay static. Kai liked the punchy category tiles and reminded me to make login impossible to miss from the landing page.
 
-## Test Case 2 — Empty Fields Validation
-| Field | Details |
-|-------|---------|
-| **Test Case ID** | TC-LOGIN-002 |
-| **Test Case Name** | Login attempt with empty email and/or password fields |
-| **Preconditions** | System is online; no text entered in one or both fields |
-| **Test Steps** | 1. Navigate to login page<br>2. Leave email and/or password field empty<br>3. Click “Login” button |
-| **Expected Result** | Error message “Please enter both fields” is displayed; no data is sent to server |
-| **Actual Result** | *(To be filled after execution)* |
-| **Pass/Fail** | *(To be filled after execution)* |
-| **Priority** | High |
+### Week 3 - Alternative Design Exploration
+I produced a contrasting Figma concept to challenge the default design assumptions. The vertical navigation surprised me by feeling faster on tablets, although the aggressive red palette felt off-brand for younger players. Work remains to document the data hand-offs between pages in a way the client can follow. He valued seeing a bold alternative and ultimately steered me back toward the calmer blue identity while keeping some of the alternate layout ideas.
 
----
+### Week 4 - Algorithm and Testing Blueprint
+Translating the favourites workflow into a step-by-step outline sharpened how the interface, storage, and future sync will interact. My first draft forgot about guest users, which would have frustrated casual visitors, so I inserted a branch to keep their bookmarks locally. A deeper performance review is on the calendar for next term when the drill catalogue grows. The client endorsed the logic and specifically requested clear messaging if a user tries to save the same drill twice, which is now baked into the plan.
 
-## Test Case 3 — Invalid Email Format
-| Field | Details |
-|-------|---------|
-| **Test Case ID** | TC-LOGIN-003 |
-| **Test Case Name** | Login attempt with incorrectly formatted email |
-| **Preconditions** | System is online |
-| **Test Steps** | 1. Navigate to login page<br>2. Enter invalid email format (e.g., `username@com`)<br>3. Enter any password<br>4. Click “Login” button |
-| **Expected Result** | Error message “Invalid email format” is displayed; no data is sent to server |
-| **Actual Result** | *(To be filled after execution)* |
-| **Pass/Fail** | *(To be filled after execution)* |
-| **Priority** | Medium |
+### Week 5 - Database and Query Work
+This week focussed on the SQLite schema and pressure-testing it with realistic queries. Seeing favourites join cleanly to users and drills reassured me that the relationships make sense. I hit a snag with inconsistent equipment entries, prompting validation rules before inserts. Migration tooling is still outstanding and flagged for upcoming sprints. The client left our review confident in the structure and asked me to capture drill duration so coaches can plan more precise sessions, which is now noted for the next data pass.
 
----
+### Week 6 - Page Assembly in HTML
+I shifted back to the front end, wiring the first three pages with shared templates to avoid duplicated layout code. Early CSS caused columns to collapse awkwardly on smaller screens, which I fixed by tightening the breakpoints and simplifying the grid. During the walkthrough Kai navigated smoothly and stressed that buttons should always communicate what happens next, so I added a microcopy to reinforce each action.
 
-## Test Case 4 — Incorrect Credentials
-| Field | Details |
-|-------|---------|
-| **Test Case ID** | TC-LOGIN-004 |
-| **Test Case Name** | Login attempt with wrong password or unregistered email |
-| **Preconditions** | System is online; entered credentials do not match any database record |
-| **Test Steps** | 1. Navigate to login page<br>2. Enter registered email OR unregistered email<br>3. Enter incorrect password<br>4. Click “Login” button |
-| **Expected Result** | Error message “Incorrect email or password” is displayed; no session is created |
-| **Actual Result** | *(To be filled after execution)* |
-| **Pass/Fail** | *(To be filled after execution)* |
-| **Priority** | High |
+### Week 7 - CSS Styling and Consistency
+I now priortisied styling as I rolled out the design system across components and introduced spacing utilities to keep rhythm consistent. The navigation bar lacked contrast until I deepened the primary colour and tweaked text weight. Kai enjoyed how cohesive the site now feels and asked for more varied imagery so players can visualise different training scenarios, which I will source in parallel with content updates.
 
-## Week 6 - Project Notes 
-This week’s focus was on building the foundation of HoopTutor through database design. I began by identifying the key types of data that would be required for the app: categories (e.g., shooting, ball-handling, defense, fitness), drills with descriptions and media, and user information for login and potential saved resources. I set up relationships between these tables by using primary and foreign keys, ensuring that each drill was linked to its category and that users could eventually store favourites.
+### Week 8 - Forms and Login Experience
+Form design dominated week eight. Floating labels proved a smart choice, keeping the login and signup forms compact without sacrificing clarity. My original error copy read too much like a system log, so I rewrote it with friendlier language and clearer remediation steps. The signup path continues to store data locally until the back end is ready, so I’m careful to set expectations with testers. Kai liked the supportive tone of the messages and floated the idea of adding a password toggle, which is now pencilled into the backlog.
 
-To test the database structure, I manually entered sample drills and ran SQL queries to confirm that joins across tables worked correctly. These queries retrieved meaningful data such as “all beginner shooting drills” or “all fitness drills saved by a particular user.” One challenge was selecting the appropriate data types for storing media links and text descriptions, as well as ensuring queries were not too basic but rather demonstrated relevance to the app’s goals. The database now provides a solid foundation for the front-end to display dynamic information.
+### Week 9 - Interactivity and Progressive Features
+The project crossed into richer interactivity as I scaffolded the service worker, manifest, and favourites persistence logic. Watching drills survive page reloads confirmed that the earlier algorithm work paid off. The cache strategy still needs refinement so every critical asset is available offline, and background sync for favourites remains on the to-do list. Running the first Lighthouse report exposed weaknesses in the webapp and guided performance tweaks. Kai was excited by the prospect of an installable app and pushed for offline drills to be ready for gym sessions.
 
-## Week 7 - Project Notes 
-The next stage shifted towards the presentation layer. I created three core pages: a homepage with category tiles, a drills library displaying resource cards, and a login page. Each page was styled with CSS to ensure visual clarity and user appeal. I experimented with a modern blue colour palette and rounded button styles to match the intended sporty yet educational tone of HoopTutor.
+### Week 10 - User Testing Prep and Bug Fixing
+I closed this phase by tightening interactive flows and preparing for the first user testing round. Toast confirmations around login and favourites now reassure users immediately. Ultra-small screens still nudge cards out of alignment, so more responsive polish is required. The second Lighthouse pass showed performance gains but also reminded me that script loading order needs another optimisation sweep. The client confirmed we are on track for the core goals and volunteered to help test once offline caching fully lands.
 
-One of the most significant learning points was linking these static pages to the back-end database so that real data could eventually be displayed. At this stage, I used placeholder content to structure the design and ensure responsiveness across different devices. Running the app locally confirmed that navigation between pages was seamless. While functional, the design still felt basic, so I noted areas for later improvement, such as hover animations and improved alignment.
+## Reflection and Next Steps
+This sprint cycle delivered a cohesive prototype with clear documentation that links every design and build decision to the agreed requirements. Keeping the README helped the client track progress and hold me accountable.
 
-## Week 8 - Project Notes 
-Building on the previous prototype, I refined the site’s look and feel using W3C standards for styling. Improvements included more consistent typography, spacing, and mobile-friendly formatting. I added subtle hover animations for category tiles and buttons, which made the interface more engaging.
+Immediate priorities:
+- Finalise offline caching strategy and reconnection sync for favourites.
+- Replace remaining placeholder drill copy with vetted training content.
+- Complete signup data persistence and role-based permissions.
+- Continue compressing media and deferring non-critical scripts to raise Lighthouse performance.
 
-I also began researching APIs that could extend the functionality of HoopTutor, such as embedding YouTube drills directly within resource cards. Some formatting issues remained, particularly with aligning text and images on different screen sizes. The client feedback highlighted that while the structure was strong, the app still required polishing to achieve a professional and consistent aesthetic.
-
-## Week 9 - Project Notes 
-This week marked the transition from static presentation to interactive functionality. I implemented the service worker, manifest.json, and app.js files to begin enabling offline support. While the initial setup ran without major errors, caching all the required resources proved challenging, and offline functionality was not yet fully operational.
-
-At the same time, I ran the first Google Lighthouse report to evaluate the site’s performance, accessibility, and best practices. The accessibility score was strong, but the performance score highlighted issues with unoptimised media. On the interactive side, I started experimenting with features that would make the site more engaging, such as the ability to save resources to favourites using local storage. Although these features were not fully stable, they demonstrated the potential of HoopTutor as a genuine web app rather than just a static site.
-
-## Week 10 - Project Notes
-This week’s focus was on completing the interactivity and addressing client concerns. The login system was refined to display appropriate error messages for invalid email or password entries, which improved the user experience significantly. Work also began on a signup page, although it is not yet fully connected to the back-end.
-
-Offline functionality remains incomplete, and this is now a priority for next term. The service worker has been set up, but it does not yet cache all necessary resources to support smooth offline use. On the design side, some formatting issues were corrected, though others persist, particularly with responsive alignment. A second Lighthouse report was conducted, which showed progress towards W3C compliance but highlighted that performance could still be improved through media optimisation.
-
-The most meaningful progress came from the interactive features: users can now save resources to favourites, and filtering drills by skill level has been introduced. These additions give HoopTutor more practical value to its intended audience. Client feedback was positive about the improvements but emphasised the need to finalise the signup page and achieve offline functionality before user testing next term.
+Once these items are resolved, HoopTutor will be ready for the first formal user testing round in Week 1 next term, setting the stage for iteration based on real player feedback.
